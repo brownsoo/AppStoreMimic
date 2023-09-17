@@ -38,4 +38,25 @@ final class KabangExamUITests: XCTestCase {
             }
         }
     }
+    
+    /// 최근 검색 저장, 가져오기 테스트
+    func testSaveAndGetRecents() async {
+        let defaults = UserDefaults(suiteName: "testing")!
+        defaults.removeObject(forKey: DefaultRecentsStorage.theKey)
+        
+        let storage = DefaultRecentsStorage(store: defaults)
+        let list = await storage.findRecents(searchTerm: "abc")
+        XCTAssertTrue(list.isEmpty)
+        
+        await storage.saveRecent(searchTerm: "abc")
+        await storage.saveRecent(searchTerm: "bcd")
+        let list2 = await storage.findRecents(searchTerm: "abc")
+        XCTAssertEqual(list2.count, 1)
+        
+        await storage.saveRecent(searchTerm: "abc")
+        await storage.saveRecent(searchTerm: "bcd")
+        let list3 = await storage.findRecents(searchTerm: "fgh")
+        XCTAssertEqual(list3.count, 0)
+        
+    }
 }

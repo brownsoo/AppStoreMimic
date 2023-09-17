@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol RecentsStorage: Actor {
-    nonisolated func findRecents(searchTerm: String) async -> [String]
-    func saveRecent(searchTerm: String) -> Void
+protocol RecentsStorage {
+    func findRecents(searchTerm: String) async -> [String]
+    func saveRecent(searchTerm: String) async -> Void
 }
