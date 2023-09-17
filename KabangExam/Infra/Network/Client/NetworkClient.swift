@@ -2,7 +2,7 @@
 //  NetworkClient.swift
 //  KabangExam
 //
-//  Created by hyonsoo han on 2023/08/31.
+//  Created by hyonsoo han on 2023/09/17.
 //
 
 import Foundation
@@ -40,10 +40,6 @@ class DefaultNetworkClient: NetworkClient {
     }
     
     private func convertToAppError(_ error: AFError, withData data: Data?) -> AppError {
-        if let data = data,
-           let res = try? JSONDecoder().decode(ResTossError.self, from: data) {
-            return AppError.requestFailed(statusCode: error.responseCode ?? 0, message: res.message)
-        }
         if error.responseCode == 304 {
             return AppError.contentNotChanged
         }
