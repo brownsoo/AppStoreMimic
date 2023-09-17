@@ -32,6 +32,12 @@
 		17BEF1C32AB6EB5000249C5E /* ResResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1C22AB6EB5000249C5E /* ResResults.swift */; };
 		17BEF1C52AB6FE5400249C5E /* ResSearchSoftware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1C42AB6FE5400249C5E /* ResSearchSoftware.swift */; };
 		17BEF1C72AB705DE00249C5E /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1C62AB705DE00249C5E /* AppError.swift */; };
+		17BEF1CC2AB70C3900249C5E /* Software.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1CB2AB70C3900249C5E /* Software.swift */; };
+		17BEF1CE2AB70ED200249C5E /* iTunesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1CD2AB70ED200249C5E /* iTunesRepository.swift */; };
+		17BEF1D12AB7122800249C5E /* DefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1D02AB7122800249C5E /* DefaultRepository.swift */; };
+		17BEF1D42AB712F700249C5E /* RecentsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1D32AB712F700249C5E /* RecentsStorage.swift */; };
+		17BEF1D62AB71D4300249C5E /* Task+Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1D52AB71D4300249C5E /* Task+Cancellable.swift */; };
+		17BEF1D82AB71D6600249C5E /* Also.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1D72AB71D6600249C5E /* Also.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +87,12 @@
 		17BEF1C42AB6FE5400249C5E /* ResSearchSoftware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResSearchSoftware.swift; sourceTree = "<group>"; };
 		17BEF1C62AB705DE00249C5E /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		17BEF1C82AB7071000249C5E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		17BEF1CB2AB70C3900249C5E /* Software.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Software.swift; sourceTree = "<group>"; };
+		17BEF1CD2AB70ED200249C5E /* iTunesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesRepository.swift; sourceTree = "<group>"; };
+		17BEF1D02AB7122800249C5E /* DefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepository.swift; sourceTree = "<group>"; };
+		17BEF1D32AB712F700249C5E /* RecentsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsStorage.swift; sourceTree = "<group>"; };
+		17BEF1D52AB71D4300249C5E /* Task+Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Cancellable.swift"; sourceTree = "<group>"; };
+		17BEF1D72AB71D6600249C5E /* Also.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Also.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,10 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				17BEF1772AB6DFFC00249C5E /* Info.plist */,
-				17BEF1692AB6DFFB00249C5E /* AppDelegate.swift */,
-				17BEF16B2AB6DFFB00249C5E /* SceneDelegate.swift */,
 				17BEF16D2AB6DFFB00249C5E /* ViewController.swift */,
-				17BEF1722AB6DFFC00249C5E /* Assets.xcassets */,
 				17BEF1992AB6E3CE00249C5E /* Application */,
 				17BEF19A2AB6E3DF00249C5E /* Data */,
 				17BEF19B2AB6E3E500249C5E /* Domain */,
@@ -170,6 +179,8 @@
 		17BEF1992AB6E3CE00249C5E /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				17BEF1692AB6DFFB00249C5E /* AppDelegate.swift */,
+				17BEF16B2AB6DFFB00249C5E /* SceneDelegate.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -177,6 +188,8 @@
 		17BEF19A2AB6E3DF00249C5E /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				17BEF1D22AB7128100249C5E /* Storage */,
+				17BEF1CF2AB711FC00249C5E /* Repository */,
 				17BEF1BC2AB6E5DB00249C5E /* Network */,
 			);
 			path = Data;
@@ -185,6 +198,8 @@
 		17BEF19B2AB6E3E500249C5E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				17BEF1CA2AB70AD900249C5E /* Entity */,
+				17BEF1C92AB70AC000249C5E /* Interface */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -208,6 +223,7 @@
 		17BEF19E2AB6E40100249C5E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				17BEF1722AB6DFFC00249C5E /* Assets.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -216,6 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				17BEF1BA2AB6E4E700249C5E /* Foot.swift */,
+				17BEF1D52AB71D4300249C5E /* Task+Cancellable.swift */,
+				17BEF1D72AB71D6600249C5E /* Also.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -270,6 +288,38 @@
 				17BEF1C42AB6FE5400249C5E /* ResSearchSoftware.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		17BEF1C92AB70AC000249C5E /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				17BEF1CD2AB70ED200249C5E /* iTunesRepository.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		17BEF1CA2AB70AD900249C5E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				17BEF1CB2AB70C3900249C5E /* Software.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		17BEF1CF2AB711FC00249C5E /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				17BEF1D02AB7122800249C5E /* DefaultRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		17BEF1D22AB7128100249C5E /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				17BEF1D32AB712F700249C5E /* RecentsStorage.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,8 +463,11 @@
 				17BEF1C72AB705DE00249C5E /* AppError.swift in Sources */,
 				17BEF1BB2AB6E4E700249C5E /* Foot.swift in Sources */,
 				17BEF16E2AB6DFFB00249C5E /* ViewController.swift in Sources */,
+				17BEF1D62AB71D4300249C5E /* Task+Cancellable.swift in Sources */,
 				17BEF1B02AB6E4C600249C5E /* NetworkResponse.swift in Sources */,
+				17BEF1D82AB71D6600249C5E /* Also.swift in Sources */,
 				17BEF1C12AB6E6AF00249C5E /* iTunesSearchEndpoint.swift in Sources */,
+				17BEF1CE2AB70ED200249C5E /* iTunesRepository.swift in Sources */,
 				17BEF1C52AB6FE5400249C5E /* ResSearchSoftware.swift in Sources */,
 				17BEF1B12AB6E4C600249C5E /* ApiEndpint.swift in Sources */,
 				17BEF1B32AB6E4C600249C5E /* HttpMethod.swift in Sources */,
@@ -423,8 +476,11 @@
 				17BEF1B62AB6E4C600249C5E /* NetworkResource.swift in Sources */,
 				17BEF16A2AB6DFFB00249C5E /* AppDelegate.swift in Sources */,
 				17BEF1BF2AB6E5FE00249C5E /* SearchApi.swift in Sources */,
+				17BEF1D42AB712F700249C5E /* RecentsStorage.swift in Sources */,
 				17BEF1B72AB6E4C600249C5E /* NetworkDataService.swift in Sources */,
+				17BEF1CC2AB70C3900249C5E /* Software.swift in Sources */,
 				17BEF1B52AB6E4C600249C5E /* ResponseDecoder.swift in Sources */,
+				17BEF1D12AB7122800249C5E /* DefaultRepository.swift in Sources */,
 				17BEF16C2AB6DFFB00249C5E /* SceneDelegate.swift in Sources */,
 				17BEF1B82AB6E4C600249C5E /* NetworkClient.swift in Sources */,
 			);
