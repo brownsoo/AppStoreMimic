@@ -38,6 +38,15 @@
 		17BEF1D42AB712F700249C5E /* RecentsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1D32AB712F700249C5E /* RecentsStorage.swift */; };
 		17BEF1D62AB71D4300249C5E /* Task+Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1D52AB71D4300249C5E /* Task+Cancellable.swift */; };
 		17BEF1D82AB71D6600249C5E /* Also.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1D72AB71D6600249C5E /* Also.swift */; };
+		17BEF1DA2AB7219200249C5E /* DefaultRecentsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1D92AB7219200249C5E /* DefaultRecentsStorage.swift */; };
+		17BEF1DB2AB7521800249C5E /* DefaultRecentsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1D92AB7219200249C5E /* DefaultRecentsStorage.swift */; };
+		17BEF1DC2AB7521F00249C5E /* RecentsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1D32AB712F700249C5E /* RecentsStorage.swift */; };
+		17BEF1DF2AB7584D00249C5E /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1DE2AB7584D00249C5E /* BaseViewModel.swift */; };
+		17BEF1E22AB75A6500249C5E /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1E12AB75A6500249C5E /* UIView+AutoLayout.swift */; };
+		17BEF1E42AB75A8700249C5E /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1E32AB75A8700249C5E /* UIViewPreview.swift */; };
+		17BEF1E62AB75AA700249C5E /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1E52AB75AA700249C5E /* UIImage+Extensions.swift */; };
+		17BEF1E82AB75AC400249C5E /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1E72AB75AC400249C5E /* Alertable.swift */; };
+		17BEF1EA2AB75ADF00249C5E /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1E92AB75ADF00249C5E /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +102,13 @@
 		17BEF1D32AB712F700249C5E /* RecentsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsStorage.swift; sourceTree = "<group>"; };
 		17BEF1D52AB71D4300249C5E /* Task+Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Cancellable.swift"; sourceTree = "<group>"; };
 		17BEF1D72AB71D6600249C5E /* Also.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Also.swift; sourceTree = "<group>"; };
+		17BEF1D92AB7219200249C5E /* DefaultRecentsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRecentsStorage.swift; sourceTree = "<group>"; };
+		17BEF1DE2AB7584D00249C5E /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		17BEF1E12AB75A6500249C5E /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		17BEF1E32AB75A8700249C5E /* UIViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreview.swift; sourceTree = "<group>"; };
+		17BEF1E52AB75AA700249C5E /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		17BEF1E72AB75AC400249C5E /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		17BEF1E92AB75ADF00249C5E /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +232,8 @@
 		17BEF19D2AB6E3F800249C5E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				17BEF1E02AB75A4600249C5E /* Util */,
+				17BEF1DD2AB7584300249C5E /* Base */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -318,8 +336,29 @@
 			isa = PBXGroup;
 			children = (
 				17BEF1D32AB712F700249C5E /* RecentsStorage.swift */,
+				17BEF1D92AB7219200249C5E /* DefaultRecentsStorage.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		17BEF1DD2AB7584300249C5E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				17BEF1DE2AB7584D00249C5E /* BaseViewModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		17BEF1E02AB75A4600249C5E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				17BEF1E12AB75A6500249C5E /* UIView+AutoLayout.swift */,
+				17BEF1E32AB75A8700249C5E /* UIViewPreview.swift */,
+				17BEF1E52AB75AA700249C5E /* UIImage+Extensions.swift */,
+				17BEF1E72AB75AC400249C5E /* Alertable.swift */,
+				17BEF1E92AB75ADF00249C5E /* LoadingView.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,16 +502,21 @@
 				17BEF1C72AB705DE00249C5E /* AppError.swift in Sources */,
 				17BEF1BB2AB6E4E700249C5E /* Foot.swift in Sources */,
 				17BEF16E2AB6DFFB00249C5E /* ViewController.swift in Sources */,
+				17BEF1EA2AB75ADF00249C5E /* LoadingView.swift in Sources */,
+				17BEF1DF2AB7584D00249C5E /* BaseViewModel.swift in Sources */,
 				17BEF1D62AB71D4300249C5E /* Task+Cancellable.swift in Sources */,
 				17BEF1B02AB6E4C600249C5E /* NetworkResponse.swift in Sources */,
 				17BEF1D82AB71D6600249C5E /* Also.swift in Sources */,
+				17BEF1E82AB75AC400249C5E /* Alertable.swift in Sources */,
 				17BEF1C12AB6E6AF00249C5E /* iTunesSearchEndpoint.swift in Sources */,
 				17BEF1CE2AB70ED200249C5E /* iTunesRepository.swift in Sources */,
 				17BEF1C52AB6FE5400249C5E /* ResSearchSoftware.swift in Sources */,
 				17BEF1B12AB6E4C600249C5E /* ApiEndpint.swift in Sources */,
+				17BEF1DA2AB7219200249C5E /* DefaultRecentsStorage.swift in Sources */,
 				17BEF1B32AB6E4C600249C5E /* HttpMethod.swift in Sources */,
 				17BEF1B22AB6E4C600249C5E /* Resource.swift in Sources */,
 				17BEF1B92AB6E4C600249C5E /* AlarmoLogger.swift in Sources */,
+				17BEF1E22AB75A6500249C5E /* UIView+AutoLayout.swift in Sources */,
 				17BEF1B62AB6E4C600249C5E /* NetworkResource.swift in Sources */,
 				17BEF16A2AB6DFFB00249C5E /* AppDelegate.swift in Sources */,
 				17BEF1BF2AB6E5FE00249C5E /* SearchApi.swift in Sources */,
@@ -482,7 +526,9 @@
 				17BEF1B52AB6E4C600249C5E /* ResponseDecoder.swift in Sources */,
 				17BEF1D12AB7122800249C5E /* DefaultRepository.swift in Sources */,
 				17BEF16C2AB6DFFB00249C5E /* SceneDelegate.swift in Sources */,
+				17BEF1E62AB75AA700249C5E /* UIImage+Extensions.swift in Sources */,
 				17BEF1B82AB6E4C600249C5E /* NetworkClient.swift in Sources */,
+				17BEF1E42AB75A8700249C5E /* UIViewPreview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +544,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17BEF1DC2AB7521F00249C5E /* RecentsStorage.swift in Sources */,
+				17BEF1DB2AB7521800249C5E /* DefaultRecentsStorage.swift in Sources */,
 				17BEF18B2AB6DFFC00249C5E /* KabangExamUITests.swift in Sources */,
 				17BEF18D2AB6DFFC00249C5E /* KabangExamUITestsLaunchTests.swift in Sources */,
 			);
