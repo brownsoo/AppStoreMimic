@@ -58,6 +58,8 @@
 		17BEF1E62AB75AA700249C5E /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1E52AB75AA700249C5E /* UIImage+Extensions.swift */; };
 		17BEF1E82AB75AC400249C5E /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1E72AB75AC400249C5E /* Alertable.swift */; };
 		17BEF1EA2AB75ADF00249C5E /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1E92AB75ADF00249C5E /* LoadingView.swift */; };
+		17BEF1ED2AB904D400249C5E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 17BEF1EC2AB904D400249C5E /* Kingfisher */; };
+		17BEF1EF2AB917E800249C5E /* FoundationExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1EE2AB917E800249C5E /* FoundationExtentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +130,7 @@
 		17BEF1E52AB75AA700249C5E /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		17BEF1E72AB75AC400249C5E /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		17BEF1E92AB75ADF00249C5E /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		17BEF1EE2AB917E800249C5E /* FoundationExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17BEF1ED2AB904D400249C5E /* Kingfisher in Frameworks */,
 				17BEF1A22AB6E46300249C5E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +346,7 @@
 				17BEF1BA2AB6E4E700249C5E /* Foot.swift */,
 				17BEF1D52AB71D4300249C5E /* Task+Cancellable.swift */,
 				17BEF1D72AB71D6600249C5E /* Also.swift */,
+				17BEF1EE2AB917E800249C5E /* FoundationExtentions.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 			name = KabangExam;
 			packageProductDependencies = (
 				17BEF1A12AB6E46300249C5E /* Alamofire */,
+				17BEF1EC2AB904D400249C5E /* Kingfisher */,
 			);
 			productName = KabangExam;
 			productReference = 17BEF1662AB6DFFB00249C5E /* KabangExam.app */;
@@ -545,6 +551,7 @@
 			mainGroup = 17BEF15D2AB6DFFB00249C5E;
 			packageReferences = (
 				17BEF1A02AB6E46300249C5E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				17BEF1EB2AB904D400249C5E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 17BEF1672AB6DFFB00249C5E /* Products */;
 			projectDirPath = "";
@@ -625,6 +632,7 @@
 				17BEF1B52AB6E4C600249C5E /* ResponseDecoder.swift in Sources */,
 				17BEF1D12AB7122800249C5E /* DefaultRepository.swift in Sources */,
 				17BEF16C2AB6DFFB00249C5E /* SceneDelegate.swift in Sources */,
+				17BEF1EF2AB917E800249C5E /* FoundationExtentions.swift in Sources */,
 				17BEF1E62AB75AA700249C5E /* UIImage+Extensions.swift in Sources */,
 				17BEF1B82AB6E4C600249C5E /* NetworkClient.swift in Sources */,
 				17BEF1E42AB75A8700249C5E /* UIViewPreview.swift in Sources */,
@@ -968,6 +976,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		17BEF1EB2AB904D400249C5E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -975,6 +991,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 17BEF1A02AB6E46300249C5E /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		17BEF1EC2AB904D400249C5E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17BEF1EB2AB904D400249C5E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

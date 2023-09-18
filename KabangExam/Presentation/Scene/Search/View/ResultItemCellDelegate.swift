@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ResultItemCellDelegate: AnyClass {
+protocol ResultItemCellDelegate: AnyObject {
     func didClickResultItemCell(id: String) -> Void
 }

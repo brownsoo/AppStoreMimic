@@ -7,58 +7,166 @@
 
 import UIKit
 import SwiftUI
+import Kingfisher
 
 final class SoftwareResultCell: UITableViewCell {
     static let reuseIdentifier = String(describing: SoftwareResultCell.self)
     static let estimatingHeight: CGFloat = 36
-    
-    weak var delegate: ResultItemCellDelegate?
-    
-    private let lbTitle = UILabel()
-    private let ivIcon = UIImageView(image: UIImage(systemName: "magnifyingglass")?
-        .withTintColor(UIColor.systemGray2)
-        .withRenderingMode(.alwaysOriginal)
-    )
+    static private let iconSize = CGSize(width: 60, height: 60)
+    static private let iconRounding = CGFloat(8)
+    static private let screenshotRounding = CGFloat(8)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+        setNeedsLayout()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    func fill(with title: String) {
-        lbTitle.text = title
+    weak var delegate: ResultItemCellDelegate?
+    private let ivIcon = UIImageView()
+    private let lbTitle = UILabel()
+    private let ratingView = UIView()
+    private let lbRatingCount = UILabel()
+    private let svScreenshots = UIStackView()
+    private let imageProcessor = DownsamplingImageProcessor(size: iconSize)
+    private let placeholderImage = UIImage().solid(UIColor.systemGray5, width: 10, height: 10)
+    
+    func fill(with model: SoftwareItemViewModel) {
+        ivIcon.kf.setImage(with: model.iconUrl,
+        placeholder: placeholderImage,
+        options: [
+            KingfisherOptionsInfoItem.processor(imageProcessor),
+            .scaleFactor(UIScreen.main.scale),
+            .transition(.fade(0.4)),
+            .cacheOriginalImage
+        ])
+        lbTitle.text = model.title
+        lbRatingCount.text = model.userRatingCount
+        svScreenshots.arrangedSubviews.enumerated().forEach {
+            let index = $0.offset
+            ($0.element as? UIImageView)?.also { iv in
+                if let url = model.screenshots.get(at: index) {
+                    iv.kf.setImage(
+                        with: url,
+                        options: [
+                            .transition(.fade(0.4)),
+                            .cacheOriginalImage
+                        ])
+                } else {
+                    iv.image = nil
+                }
+            }
+        }
     }
 }
 
 extension SoftwareResultCell {
     private func setupViews() {
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+//        contentView.translatesAutoresizingMaskIntoConstraints = false
+//        contentView.makeConstraints { it in
+//            it.edgesConstraintToSuperview(edges: .all)
+//        }
+//        contentView.setContentHuggingPriority(.required, for: .vertical)
+//        contentView.setContentCompressionResistancePriority(.required, for: .vertical)
         
+        
+        let padding: CGFloat = 20
         ivIcon.also { it in
+            it.backgroundColor = .systemGray4
+            it.layer.cornerRadius = SoftwareResultCell.iconRounding
+            it.layer.borderColor = UIColor.systemGray3.cgColor
+            it.layer.borderWidth = 0.5
+            it.layer.masksToBounds = true
             contentView.addSubview(it)
             it.makeConstraints {
-                $0.sizeAnchorConstraintTo(20)
-                $0.leadingAnchorConstraintToSuperview()
-                $0.centerYAnchorConstraintToSuperview()
+                $0.sizeAnchorConstraintTo(SoftwareResultCell.iconSize.width)
+                $0.leadingAnchorConstraintToSuperview(padding)
+                $0.topAnchorConstraintToSuperview(padding)
             }
         }
         
+        let btInstall = UIButton(type: .system)
+        btInstall.also { it in
+            it.setTitle("받기", for: .normal)
+            it.titleLabel?.font = .boldSystemFont(ofSize: 14)
+            it.setContentHuggingPriority(.required, for: .horizontal)
+            it.setBackgroundImage(
+                UIImage().solid(.systemGray5, width: 20, height: 20)
+                    .round(8)
+                    .resizableImage(withCapInsets: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)),
+                for: .normal)
+            it.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+            contentView.addSubview(it)
+            it.makeConstraints {
+                $0.trailingAnchorConstraintToSuperview(-padding)
+                $0.centerYAnchorConstraintTo(ivIcon.centerYAnchor)
+            }
+        }
+        
+        let svRating = UIStackView(arrangedSubviews: [ratingView, lbRatingCount])
+        svRating.axis = .horizontal
+        svRating.spacing = 8
+        lbRatingCount.also {
+            $0.textColor = .secondaryLabel
+            $0.font = .systemFont(ofSize: 12)
+        }
+        
         lbTitle.also { it in
-            it.textColor = .label
-            it.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-            it.setContentHuggingPriority(.required, for: .vertical)
+            it.font = .boldSystemFont(ofSize: 16)
+        }
+        let svHead = UIStackView(arrangedSubviews: [
+            lbTitle, svRating
+        ])
+        svHead.also { it in
+            it.axis = .vertical
+            it.distribution = .equalCentering
+            it.alignment = .leading
+            it.setContentHuggingPriority(.defaultLow, for: .horizontal)
+            it.setContentHuggingPriority(.defaultLow, for: .vertical)
             it.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+            it.setContentCompressionResistancePriority(.required, for: .vertical)
             contentView.addSubview(it)
             it.makeConstraints {
                 $0.leadingAnchorConstraintTo(ivIcon.trailingAnchor, constant: 10)
-                $0.topAnchorConstraintToSuperview(10)
-                $0.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -30)
-                    .isActive = true
-                $0.bottomAnchorConstraintToSuperview(-10)?.priority = .defaultHigh
+                $0.trailingAnchorConstraintTo(btInstall.leadingAnchor, constant: -10)
+                $0.topAnchorConstraintTo(ivIcon.topAnchor)
+                $0.bottomAnchorConstraintTo(ivIcon.bottomAnchor)
+            }
+        }
+        
+        let screenBounds = UIScreen.main.bounds
+        let screenRatio = screenBounds.height / screenBounds.width
+        let spacing: CGFloat = 10
+        let screenshotWidth = (contentView.bounds.width - padding * 2 - spacing * 2) / 3
+        let screenshotHeight = screenshotWidth * screenRatio
+
+        svScreenshots.also { it in
+            it.axis = .horizontal
+            it.distribution = .fillEqually
+            it.spacing = 10
+            it.setContentCompressionResistancePriority(.required, for: .vertical)
+            it.setContentHuggingPriority(.required, for: .vertical)
+            contentView.addSubview(it)
+            it.makeConstraints {
+                $0.heightAnchorConstraintTo(screenshotHeight)
+                $0.leadingAnchorConstraintToSuperview(padding)
+                $0.trailingAnchorConstraintToSuperview(-padding)
+                $0.topAnchorConstraintTo(ivIcon.bottomAnchor, constant: 20)
+                $0.bottomAnchorConstraintToSuperview(-padding)?.priority = .defaultHigh
+            }
+            for _ in 0..<3 {
+                let iv = UIImageView()
+                iv.contentMode = .scaleAspectFill
+                iv.backgroundColor = .systemGray4
+                iv.layer.cornerRadius = SoftwareResultCell.screenshotRounding
+                iv.layer.borderColor = UIColor.systemGray3.cgColor
+                iv.layer.borderWidth = 0.5
+                iv.layer.masksToBounds = true
+                it.addArrangedSubview(iv)
             }
         }
     }
@@ -66,18 +174,13 @@ extension SoftwareResultCell {
 
 struct SoftwareResultCell_Preview: PreviewProvider {
     static var previews: some View {
-        let cell1 = CandidateSearchCell()
-        let cell2 = CandidateSearchCell()
-        List {
-            UIViewPreview {
-                cell1
-            }.onAppear { cell1.fill(with: "카카오뱅크") }
-            UIViewPreview {
-                cell2
-            }.onAppear { cell2.fill(with: "카카오뱅크2") }
+        let cell1 = SoftwareResultCell()
+        let cell2 = SoftwareResultCell()
+        UIViewPreview {
+            cell1
+        }.onAppear {
+            cell1.fill(with: SoftwareItemViewModel(model: Software.sample()))
         }
-        .listStyle(PlainListStyle())
-        .previewLayout(.sizeThatFits)
     }
     
 }
