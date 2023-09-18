@@ -32,5 +32,19 @@ final class KabangExamTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testCountFormat() throws {
+        XCTAssertEqual(100.readableCount(), "100")
+        XCTAssertEqual(1000.readableCount(), "1천")
+        XCTAssertEqual(1010.readableCount(), "1천")
+        XCTAssertEqual(1100.readableCount(), "1.1천")
+        
+        XCTAssertEqual(1_1000.readableCount(), "1.1만")
+        XCTAssertEqual(11_0000.readableCount(), "11만")
+        XCTAssertEqual(1100_0120.readableCount(), "1100만")
+        
+        XCTAssertEqual(1_1100_0120.readableCount(), "1억+")
+        
+    }
 
 }

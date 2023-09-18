@@ -7,9 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1740D95E2AB8280E003C2D69 /* SoftwareResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D95D2AB8280E003C2D69 /* SoftwareResultCell.swift */; };
+		1740D9602AB83150003C2D69 /* RecentSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D95F2AB83150003C2D69 /* RecentSearchCell.swift */; };
+		1740D9632AB839B2003C2D69 /* CandidateSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D9622AB839B2003C2D69 /* CandidateSearchCell.swift */; };
+		1740D9652AB83C6A003C2D69 /* SearchTermCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D9642AB83C6A003C2D69 /* SearchTermCellDelegate.swift */; };
+		1740D9672AB83D1C003C2D69 /* ResultItemCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D9662AB83D1C003C2D69 /* ResultItemCellDelegate.swift */; };
+		1740D96D2AB83E49003C2D69 /* SoftwareItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D96C2AB83E49003C2D69 /* SoftwareItemViewModel.swift */; };
+		1740D96F2AB84021003C2D69 /* Int+CountFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D96E2AB84021003C2D69 /* Int+CountFormat.swift */; };
+		1740D9702AB84021003C2D69 /* Int+CountFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D96E2AB84021003C2D69 /* Int+CountFormat.swift */; };
+		1740D9722AB84312003C2D69 /* Software+sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D9712AB84312003C2D69 /* Software+sample.swift */; };
+		1740D9732AB84312003C2D69 /* Software+sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D9712AB84312003C2D69 /* Software+sample.swift */; };
+		1740D9742AB847B5003C2D69 /* Software.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1CB2AB70C3900249C5E /* Software.swift */; };
 		17BEF16A2AB6DFFB00249C5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1692AB6DFFB00249C5E /* AppDelegate.swift */; };
 		17BEF16C2AB6DFFB00249C5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF16B2AB6DFFB00249C5E /* SceneDelegate.swift */; };
-		17BEF16E2AB6DFFB00249C5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF16D2AB6DFFB00249C5E /* ViewController.swift */; };
+		17BEF16E2AB6DFFB00249C5E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF16D2AB6DFFB00249C5E /* SearchViewController.swift */; };
 		17BEF1732AB6DFFC00249C5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17BEF1722AB6DFFC00249C5E /* Assets.xcassets */; };
 		17BEF1762AB6DFFC00249C5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17BEF1742AB6DFFC00249C5E /* LaunchScreen.storyboard */; };
 		17BEF1812AB6DFFC00249C5E /* KabangExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1802AB6DFFC00249C5E /* KabangExamTests.swift */; };
@@ -67,10 +78,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1740D95D2AB8280E003C2D69 /* SoftwareResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftwareResultCell.swift; sourceTree = "<group>"; };
+		1740D95F2AB83150003C2D69 /* RecentSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchCell.swift; sourceTree = "<group>"; };
+		1740D9622AB839B2003C2D69 /* CandidateSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateSearchCell.swift; sourceTree = "<group>"; };
+		1740D9642AB83C6A003C2D69 /* SearchTermCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTermCellDelegate.swift; sourceTree = "<group>"; };
+		1740D9662AB83D1C003C2D69 /* ResultItemCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultItemCellDelegate.swift; sourceTree = "<group>"; };
+		1740D96C2AB83E49003C2D69 /* SoftwareItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftwareItemViewModel.swift; sourceTree = "<group>"; };
+		1740D96E2AB84021003C2D69 /* Int+CountFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+CountFormat.swift"; sourceTree = "<group>"; };
+		1740D9712AB84312003C2D69 /* Software+sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Software+sample.swift"; sourceTree = "<group>"; };
 		17BEF1662AB6DFFB00249C5E /* KabangExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KabangExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BEF1692AB6DFFB00249C5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17BEF16B2AB6DFFB00249C5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		17BEF16D2AB6DFFB00249C5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		17BEF16D2AB6DFFB00249C5E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		17BEF1722AB6DFFC00249C5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17BEF1752AB6DFFC00249C5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17BEF1772AB6DFFC00249C5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,6 +156,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1740D9592AB827BF003C2D69 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1740D9612AB831DD003C2D69 /* Model */,
+				1740D9692AB83DA0003C2D69 /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		1740D95B2AB827E1003C2D69 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				1740D96B2AB83DD9003C2D69 /* Model */,
+				1740D96A2AB83DD6003C2D69 /* View */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		1740D95C2AB827E9003C2D69 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1740D95D2AB8280E003C2D69 /* SoftwareResultCell.swift */,
+				1740D95F2AB83150003C2D69 /* RecentSearchCell.swift */,
+				1740D9622AB839B2003C2D69 /* CandidateSearchCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1740D9612AB831DD003C2D69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1740D96C2AB83E49003C2D69 /* SoftwareItemViewModel.swift */,
+				1740D9712AB84312003C2D69 /* Software+sample.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1740D9682AB83D82003C2D69 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				1740D95B2AB827E1003C2D69 /* Detail */,
+				1740D9592AB827BF003C2D69 /* Search */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		1740D9692AB83DA0003C2D69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				17BEF16D2AB6DFFB00249C5E /* SearchViewController.swift */,
+				1740D9642AB83C6A003C2D69 /* SearchTermCellDelegate.swift */,
+				1740D9662AB83D1C003C2D69 /* ResultItemCellDelegate.swift */,
+				1740D95C2AB827E9003C2D69 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1740D96A2AB83DD6003C2D69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1740D96B2AB83DD9003C2D69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		17BEF15D2AB6DFFB00249C5E = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				17BEF1772AB6DFFC00249C5E /* Info.plist */,
-				17BEF16D2AB6DFFB00249C5E /* ViewController.swift */,
 				17BEF1992AB6E3CE00249C5E /* Application */,
 				17BEF19A2AB6E3DF00249C5E /* Data */,
 				17BEF19B2AB6E3E500249C5E /* Domain */,
@@ -232,6 +321,7 @@
 		17BEF19D2AB6E3F800249C5E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1740D9682AB83D82003C2D69 /* Scene */,
 				17BEF1E02AB75A4600249C5E /* Util */,
 				17BEF1DD2AB7584300249C5E /* Base */,
 			);
@@ -357,6 +447,7 @@
 				17BEF1E52AB75AA700249C5E /* UIImage+Extensions.swift */,
 				17BEF1E72AB75AC400249C5E /* Alertable.swift */,
 				17BEF1E92AB75ADF00249C5E /* LoadingView.swift */,
+				1740D96E2AB84021003C2D69 /* Int+CountFormat.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -501,27 +592,35 @@
 				17BEF1C32AB6EB5000249C5E /* ResResults.swift in Sources */,
 				17BEF1C72AB705DE00249C5E /* AppError.swift in Sources */,
 				17BEF1BB2AB6E4E700249C5E /* Foot.swift in Sources */,
-				17BEF16E2AB6DFFB00249C5E /* ViewController.swift in Sources */,
+				17BEF16E2AB6DFFB00249C5E /* SearchViewController.swift in Sources */,
 				17BEF1EA2AB75ADF00249C5E /* LoadingView.swift in Sources */,
 				17BEF1DF2AB7584D00249C5E /* BaseViewModel.swift in Sources */,
 				17BEF1D62AB71D4300249C5E /* Task+Cancellable.swift in Sources */,
 				17BEF1B02AB6E4C600249C5E /* NetworkResponse.swift in Sources */,
+				1740D95E2AB8280E003C2D69 /* SoftwareResultCell.swift in Sources */,
 				17BEF1D82AB71D6600249C5E /* Also.swift in Sources */,
+				1740D96F2AB84021003C2D69 /* Int+CountFormat.swift in Sources */,
 				17BEF1E82AB75AC400249C5E /* Alertable.swift in Sources */,
+				1740D9632AB839B2003C2D69 /* CandidateSearchCell.swift in Sources */,
 				17BEF1C12AB6E6AF00249C5E /* iTunesSearchEndpoint.swift in Sources */,
 				17BEF1CE2AB70ED200249C5E /* iTunesRepository.swift in Sources */,
 				17BEF1C52AB6FE5400249C5E /* ResSearchSoftware.swift in Sources */,
 				17BEF1B12AB6E4C600249C5E /* ApiEndpint.swift in Sources */,
 				17BEF1DA2AB7219200249C5E /* DefaultRecentsStorage.swift in Sources */,
 				17BEF1B32AB6E4C600249C5E /* HttpMethod.swift in Sources */,
+				1740D9602AB83150003C2D69 /* RecentSearchCell.swift in Sources */,
 				17BEF1B22AB6E4C600249C5E /* Resource.swift in Sources */,
 				17BEF1B92AB6E4C600249C5E /* AlarmoLogger.swift in Sources */,
+				1740D96D2AB83E49003C2D69 /* SoftwareItemViewModel.swift in Sources */,
 				17BEF1E22AB75A6500249C5E /* UIView+AutoLayout.swift in Sources */,
 				17BEF1B62AB6E4C600249C5E /* NetworkResource.swift in Sources */,
+				1740D9652AB83C6A003C2D69 /* SearchTermCellDelegate.swift in Sources */,
 				17BEF16A2AB6DFFB00249C5E /* AppDelegate.swift in Sources */,
 				17BEF1BF2AB6E5FE00249C5E /* SearchApi.swift in Sources */,
 				17BEF1D42AB712F700249C5E /* RecentsStorage.swift in Sources */,
+				1740D9672AB83D1C003C2D69 /* ResultItemCellDelegate.swift in Sources */,
 				17BEF1B72AB6E4C600249C5E /* NetworkDataService.swift in Sources */,
+				1740D9722AB84312003C2D69 /* Software+sample.swift in Sources */,
 				17BEF1CC2AB70C3900249C5E /* Software.swift in Sources */,
 				17BEF1B52AB6E4C600249C5E /* ResponseDecoder.swift in Sources */,
 				17BEF1D12AB7122800249C5E /* DefaultRepository.swift in Sources */,
@@ -536,7 +635,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1740D9742AB847B5003C2D69 /* Software.swift in Sources */,
+				1740D9702AB84021003C2D69 /* Int+CountFormat.swift in Sources */,
 				17BEF1812AB6DFFC00249C5E /* KabangExamTests.swift in Sources */,
+				1740D9732AB84312003C2D69 /* Software+sample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,7 +805,6 @@
 				INFOPLIST_FILE = KabangExam/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -730,7 +831,6 @@
 				INFOPLIST_FILE = KabangExam/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
