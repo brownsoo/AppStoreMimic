@@ -18,6 +18,8 @@
 		1740D9722AB84312003C2D69 /* Software+sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D9712AB84312003C2D69 /* Software+sample.swift */; };
 		1740D9732AB84312003C2D69 /* Software+sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D9712AB84312003C2D69 /* Software+sample.swift */; };
 		1740D9742AB847B5003C2D69 /* Software.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1CB2AB70C3900249C5E /* Software.swift */; };
+		177BA9202AB9300900560073 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BA91F2AB9300900560073 /* RatingView.swift */; };
+		177BA9222AB94A5300560073 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BA9212AB94A5300560073 /* UIViewControllerPreview.swift */; };
 		17BEF16A2AB6DFFB00249C5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1692AB6DFFB00249C5E /* AppDelegate.swift */; };
 		17BEF16C2AB6DFFB00249C5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF16B2AB6DFFB00249C5E /* SceneDelegate.swift */; };
 		17BEF16E2AB6DFFB00249C5E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF16D2AB6DFFB00249C5E /* SearchViewController.swift */; };
@@ -88,6 +90,8 @@
 		1740D96C2AB83E49003C2D69 /* SoftwareItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftwareItemViewModel.swift; sourceTree = "<group>"; };
 		1740D96E2AB84021003C2D69 /* Int+CountFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+CountFormat.swift"; sourceTree = "<group>"; };
 		1740D9712AB84312003C2D69 /* Software+sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Software+sample.swift"; sourceTree = "<group>"; };
+		177BA91F2AB9300900560073 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		177BA9212AB94A5300560073 /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
 		17BEF1662AB6DFFB00249C5E /* KabangExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KabangExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BEF1692AB6DFFB00249C5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17BEF16B2AB6DFFB00249C5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -231,6 +235,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		177BA91E2AB92FBB00560073 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				177BA91F2AB9300900560073 /* RatingView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		17BEF15D2AB6DFFB00249C5E = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +337,7 @@
 		17BEF19D2AB6E3F800249C5E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				177BA91E2AB92FBB00560073 /* Component */,
 				1740D9682AB83D82003C2D69 /* Scene */,
 				17BEF1E02AB75A4600249C5E /* Util */,
 				17BEF1DD2AB7584300249C5E /* Base */,
@@ -453,6 +466,7 @@
 				17BEF1E72AB75AC400249C5E /* Alertable.swift */,
 				17BEF1E92AB75ADF00249C5E /* LoadingView.swift */,
 				1740D96E2AB84021003C2D69 /* Int+CountFormat.swift */,
+				177BA9212AB94A5300560073 /* UIViewControllerPreview.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -604,6 +618,7 @@
 				17BEF1DF2AB7584D00249C5E /* BaseViewModel.swift in Sources */,
 				17BEF1D62AB71D4300249C5E /* Task+Cancellable.swift in Sources */,
 				17BEF1B02AB6E4C600249C5E /* NetworkResponse.swift in Sources */,
+				177BA9222AB94A5300560073 /* UIViewControllerPreview.swift in Sources */,
 				1740D95E2AB8280E003C2D69 /* SoftwareResultCell.swift in Sources */,
 				17BEF1D82AB71D6600249C5E /* Also.swift in Sources */,
 				1740D96F2AB84021003C2D69 /* Int+CountFormat.swift in Sources */,
@@ -622,6 +637,7 @@
 				17BEF1E22AB75A6500249C5E /* UIView+AutoLayout.swift in Sources */,
 				17BEF1B62AB6E4C600249C5E /* NetworkResource.swift in Sources */,
 				1740D9652AB83C6A003C2D69 /* SearchTermCellDelegate.swift in Sources */,
+				177BA9202AB9300900560073 /* RatingView.swift in Sources */,
 				17BEF16A2AB6DFFB00249C5E /* AppDelegate.swift in Sources */,
 				17BEF1BF2AB6E5FE00249C5E /* SearchApi.swift in Sources */,
 				17BEF1D42AB712F700249C5E /* RecentsStorage.swift in Sources */,

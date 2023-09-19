@@ -29,7 +29,7 @@ final class SoftwareResultCell: UITableViewCell {
     weak var delegate: ResultItemCellDelegate?
     private let ivIcon = UIImageView()
     private let lbTitle = UILabel()
-    private let ratingView = UIView()
+    private let ratingView = RatingView()
     private let lbRatingCount = UILabel()
     private let svScreenshots = UIStackView()
     private let imageProcessor = DownsamplingImageProcessor(size: iconSize)
@@ -46,6 +46,7 @@ final class SoftwareResultCell: UITableViewCell {
         ])
         lbTitle.text = model.title
         lbRatingCount.text = model.userRatingCount
+        ratingView.rate = CGFloat(model.userRating)
         svScreenshots.arrangedSubviews.enumerated().forEach {
             let index = $0.offset
             ($0.element as? UIImageView)?.also { iv in
@@ -93,15 +94,15 @@ extension SoftwareResultCell {
         btInstall.also { it in
             it.setTitle("받기", for: .normal)
             it.titleLabel?.font = .boldSystemFont(ofSize: 14)
+            it.titleLabel?.adjustsFontSizeToFitWidth = true
+            it.sizeToFit()
             it.setContentHuggingPriority(.required, for: .horizontal)
-            it.setBackgroundImage(
-                UIImage().solid(.systemGray5, width: 20, height: 20)
-                    .round(8)
-                    .resizableImage(withCapInsets: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)),
-                for: .normal)
-            it.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+            it.backgroundColor = .systemGray5
+            it.layer.cornerRadius = 15
+            it.contentEdgeInsets = UIEdgeInsets(top: 5, left: 20, bottom: 5, right: 20)
             contentView.addSubview(it)
             it.makeConstraints {
+                $0.heightAnchorConstraintTo(30)
                 $0.trailingAnchorConstraintToSuperview(-padding)
                 $0.centerYAnchorConstraintTo(ivIcon.centerYAnchor)
             }
@@ -109,7 +110,8 @@ extension SoftwareResultCell {
         
         let svRating = UIStackView(arrangedSubviews: [ratingView, lbRatingCount])
         svRating.axis = .horizontal
-        svRating.spacing = 8
+        svRating.alignment = .center
+        svRating.spacing = 4
         lbRatingCount.also {
             $0.textColor = .secondaryLabel
             $0.font = .systemFont(ofSize: 12)
@@ -175,7 +177,6 @@ extension SoftwareResultCell {
 struct SoftwareResultCell_Preview: PreviewProvider {
     static var previews: some View {
         let cell1 = SoftwareResultCell()
-        let cell2 = SoftwareResultCell()
         UIViewPreview {
             cell1
         }.onAppear {
