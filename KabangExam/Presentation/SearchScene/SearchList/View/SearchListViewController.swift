@@ -9,10 +9,10 @@ import UIKit
 import SwiftUI
 import Combine
 
-class SearchViewController: UIViewController {
+class SearchListViewController: UIViewController {
     
-    static func create(viewModel: SearchViewModel) -> SearchViewController {
-        let vc = SearchViewController()
+    static func create(viewModel: SearchViewModel) -> SearchListViewController {
+        let vc = SearchListViewController()
         vc.viewModel = viewModel
         return vc
     }
@@ -38,14 +38,14 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: Alertable {
+extension SearchListViewController: Alertable {
     private func showError(_ message: String) {
         guard !message.isEmpty else { return }
         showAlert(title: "앗!!", message: message)
     }
 }
 
-extension SearchViewController {
+extension SearchListViewController {
     
     fileprivate func updateView(_ state: SearchViewState) {
         switch state.status {
@@ -152,7 +152,7 @@ extension SearchViewController {
 }
 
 
-extension SearchViewController: UISearchControllerDelegate {
+extension SearchListViewController: UISearchControllerDelegate {
     func willPresentSearchController(_ searchController: UISearchController) {
         foot("")
         //viewModel?.enterSearch()
@@ -163,7 +163,7 @@ extension SearchViewController: UISearchControllerDelegate {
     }
 }
 
-extension SearchViewController: UISearchResultsUpdating {
+extension SearchListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
         debugPrint(searchText)
@@ -173,7 +173,7 @@ extension SearchViewController: UISearchResultsUpdating {
 }
 
 
-extension SearchViewController: UISearchBarDelegate {
+extension SearchListViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         debugPrint("start")
     }
@@ -200,7 +200,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
-extension SearchViewController: UITableViewDelegate {
+extension SearchListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let state = viewModel?.currentState.status ?? .idle
         if viewModel == nil || state != .idle {
@@ -297,7 +297,7 @@ struct SearchView_Preview: PreviewProvider {
         
         UIViewControllerPreview {
             UINavigationController(
-                rootViewController: SearchViewController().also { vc in
+                rootViewController: SearchListViewController().also { vc in
                     vc.updateView(stateIdle)
                 }
             )

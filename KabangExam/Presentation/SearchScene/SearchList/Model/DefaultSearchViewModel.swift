@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-/// default SearchViewModel implements
+/// 기본 SearchViewModel implements
 
 final class DefaultSearchViewModel: BaseViewModel {
     private let repository: iTunesRepository
@@ -24,9 +24,11 @@ final class DefaultSearchViewModel: BaseViewModel {
         }
     }
     private let mainQueue = DispatchQueue.main
+    private let actions: SearchListViewActions
     
-    init(repository: iTunesRepository) {
+    init(repository: iTunesRepository, actions: SearchListViewActions) {
         self.repository = repository
+        self.actions = actions
         self._stateChanges = CurrentValueSubject(SearchViewState(status: .idle, recentTerms: [], candidateTerms: [], searchedItems: []))
     }
     
@@ -112,7 +114,13 @@ extension DefaultSearchViewModel: SearchViewModel {
     
     // MARK: ResultItemCellDelegate
     func didClickResultItemCell(id: String?) {
-        debugPrint(id)
+        guard let id = id else {
+            return
+        }
+        if let current = self.currentState.searchedItems.first(where: { $0.id == id }) {
+            actions.showSoftwareDetail
+            
+        }
     }
     
     

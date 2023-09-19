@@ -7,6 +7,7 @@
 
 import Foundation
 
+// FIXME: Software 이름 괜찮..?
 final class SoftwareItemViewModel: ResultItemModel {
     let id: String
     let iconUrl: URL?
