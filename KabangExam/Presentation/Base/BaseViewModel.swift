@@ -9,8 +9,16 @@ import Foundation
 import Combine
 
 protocol ViewModel {
+    // -- out
     var errorMessages: AnyPublisher<String, Never> { get }
     var alertMesssges: AnyPublisher<String, Never> { get }
+    // -- in
+    /// 초기화
+    func load() -> Void
+}
+
+extension ViewModel {
+    func load() {}
 }
 
 @MainActor

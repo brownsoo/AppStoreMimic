@@ -19,7 +19,6 @@ final class SoftwareResultCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
-        setNeedsLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -27,6 +26,9 @@ final class SoftwareResultCell: UITableViewCell {
     }
     
     weak var delegate: ResultItemCellDelegate?
+    private var id: String? = nil
+    
+    private let btTrans = UIButton()
     private let ivIcon = UIImageView()
     private let lbTitle = UILabel()
     private let ratingView = RatingView()
@@ -36,6 +38,7 @@ final class SoftwareResultCell: UITableViewCell {
     private let placeholderImage = UIImage().solid(UIColor.systemGray5, width: 10, height: 10)
     
     func fill(with model: SoftwareItemViewModel) {
+        self.id = model.id
         ivIcon.kf.setImage(with: model.iconUrl,
         placeholder: placeholderImage,
         options: [
@@ -63,9 +66,19 @@ final class SoftwareResultCell: UITableViewCell {
             }
         }
     }
+    
+    
 }
 
 extension SoftwareResultCell {
+    
+    @objc
+    private func didClick() {
+        if let id = self.id {
+            delegate?.didClickResultItemCell(id: id)
+        }
+    }
+    
     private func setupViews() {
 //        contentView.translatesAutoresizingMaskIntoConstraints = false
 //        contentView.makeConstraints { it in
@@ -73,10 +86,18 @@ extension SoftwareResultCell {
 //        }
 //        contentView.setContentHuggingPriority(.required, for: .vertical)
 //        contentView.setContentCompressionResistancePriority(.required, for: .vertical)
-        
+        btTrans.also { it in
+            it.setBackgroundImage(UIImage().solid(.systemGray6, width: 10, height: 10).resizableImage(withCapInsets: .zero), for: .highlighted)
+            it.addTarget(self, action: #selector(didClick), for: .touchUpInside)
+            contentView.addSubview(it)
+            it.makeConstraints {
+                $0.edgesConstraintToSuperview(edges: .all)
+            }
+        }
         
         let padding: CGFloat = 20
         ivIcon.also { it in
+            it.isUserInteractionEnabled = false
             it.backgroundColor = .systemGray4
             it.layer.cornerRadius = SoftwareResultCell.iconRounding
             it.layer.borderColor = UIColor.systemGray3.cgColor
@@ -124,6 +145,7 @@ extension SoftwareResultCell {
             lbTitle, svRating
         ])
         svHead.also { it in
+            it.isUserInteractionEnabled = false
             it.axis = .vertical
             it.distribution = .equalCentering
             it.alignment = .leading
@@ -147,6 +169,7 @@ extension SoftwareResultCell {
         let screenshotHeight = screenshotWidth * screenRatio
 
         svScreenshots.also { it in
+            it.isUserInteractionEnabled = false
             it.axis = .horizontal
             it.distribution = .fillEqually
             it.spacing = 10

@@ -8,9 +8,9 @@
 import UIKit
 import SwiftUI
 
-final class RecentSearchCell: UITableViewCell {
-    static let reuseIdentifier = String(describing: RecentSearchCell.self)
-    static let estimatingHeight: CGFloat = 36
+final class RecentsSearchCell: UITableViewCell {
+    static let reuseIdentifier = String(describing: RecentsSearchCell.self)
+    static let estimatingHeight: CGFloat = 44
     
     private let lbTitle = UILabel()
     
@@ -28,7 +28,7 @@ final class RecentSearchCell: UITableViewCell {
     }
 }
 
-extension RecentSearchCell {
+extension RecentsSearchCell {
     private func setupViews() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         lbTitle.also { it in
@@ -38,7 +38,7 @@ extension RecentSearchCell {
             it.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
             contentView.addSubview(it)
             it.makeConstraints {
-                $0.leadingAnchorConstraintToSuperview()
+                $0.leadingAnchorConstraintToSuperview(20)
                 $0.topAnchorConstraintToSuperview(10)
                 $0.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -30)
                     .isActive = true
@@ -50,8 +50,8 @@ extension RecentSearchCell {
 
 struct RecentSearchCell_Preview: PreviewProvider {
     static var previews: some View {
-        let cell1 = RecentSearchCell()
-        let cell2 = RecentSearchCell()
+        let cell1 = RecentsSearchCell()
+        let cell2 = RecentsSearchCell()
         List {
             UIViewPreview {
                 cell1

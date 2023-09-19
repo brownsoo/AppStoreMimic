@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct SoftwareItemViewModel {
+final class SoftwareItemViewModel: ResultItemModel {
+    let id: String
     let iconUrl: URL?
     let title: String
     let userRating: Double
@@ -16,7 +17,10 @@ struct SoftwareItemViewModel {
     let contentAdvisoryRating: String
     let screenshots: [URL]
     
-    init(iconUrl: URL?, title: String, userRating: Double, userRatingCount: String, genre: String, contentAdvisoryRating: String, screenshots: [URL]) {
+    init(id: String,
+         iconUrl: URL?, title: String, userRating: Double, userRatingCount: String,
+         genre: String, contentAdvisoryRating: String, screenshots: [URL]) {
+        self.id = id
         self.iconUrl = iconUrl
         self.title = title
         self.userRating = userRating
@@ -28,13 +32,16 @@ struct SoftwareItemViewModel {
 }
 
 extension SoftwareItemViewModel {
-    init(model: Software) {
-        self.iconUrl = model.icon
-        self.title = model.title
-        self.userRating = model.rating
-        self.userRatingCount = model.ratingCount.readableCount()
-        self.genre = model.genre
-        self.contentAdvisoryRating = model.contentAdvisoryRating
-        self.screenshots = model.screenshots
+    convenience init(model: Software) {
+        self.init(
+            id: model.id,
+            iconUrl: model.icon,
+            title: model.title,
+            userRating: model.rating,
+            userRatingCount: model.ratingCount.readableCount(),
+            genre: model.genre,
+            contentAdvisoryRating: model.contentAdvisoryRating,
+            screenshots: model.screenshots
+        )
     }
 }
