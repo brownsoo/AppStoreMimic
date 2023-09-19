@@ -24,7 +24,7 @@ class SearchViewController: UIViewController {
     private var searchController: UISearchController?
     private let resultVc = SearchResultsTableViewController()
     private lazy var activityView = UIActivityIndicatorView(style: .large)
-    
+    private var typingPublisher = PassthroughSubject<String, Never>()
     private var cancelBag = Set<AnyCancellable>()
     
     override func loadView() {
@@ -58,7 +58,7 @@ extension SearchViewController {
                 self.recentsDataSource.apply(recentsSnap, animatingDifferences: false)
                 // navigationItem.largeTitleDisplayMode = .automatic
                 break
-            case .searching:
+            case .typing:
                 //navigationItem.largeTitleDisplayMode = .never
                 activityView.isHidden = true
 //                resultVc.updateData(state.candidateTerms.map({ CandidateItemViewModel(text: $0)}))
@@ -94,6 +94,11 @@ extension SearchViewController {
             .sink { self.showError($0) }
             .store(in: &cancelBag)
         
+        typingPublisher.throttle(for: 500, scheduler: RunLoop.main, latest: true)
+            .sink {
+                vm.typed($0)
+            }
+            .store(in: &cancelBag)
     }
     
     private func setupViews() {
@@ -160,8 +165,10 @@ extension SearchViewController: UISearchControllerDelegate {
 
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        //debugPrint(searchController.searchBar.text ?? "")
+        let searchText = searchController.searchBar.text ?? ""
+        debugPrint(searchText)
         //viewModel?.typed(searchController.searchBar.text ?? "")
+        typingPublisher.send(searchText)
     }
 }
 
@@ -177,11 +184,11 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         debugPrint("cancel")
+        viewModel?.cancelSearch()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        debugPrint(searchText)
-        viewModel?.typed(searchText)
+        //
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -196,7 +203,7 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let state = viewModel?.currentState.status ?? .idle
-        if state != .idle {
+        if viewModel == nil || state != .idle {
             let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: RecentsHeaderCell.reuseIdentifier)!
             return cell
         }
@@ -228,7 +235,7 @@ final class RecentsHeaderCell: UITableViewHeaderFooterView {
         contentView.addSubview(lb)
         lb.makeConstraints { it in
             it.leadingAnchorConstraintToSuperview(20)
-            it.topAnchorConstraintToSuperview(10)
+            it.topAnchorConstraintToSuperview(0)
             it.bottomAnchorConstraintToSuperview(-10)
         }
     }
@@ -251,7 +258,7 @@ struct SearchView_Preview: PreviewProvider {
     
     static let stateIdle = SearchViewState(
         status: .idle,
-        recentTerms: ["Alan Walker", "David Guetta", "Avicii", "Marshmello", "Steve Aoki", "R3HAB", "Armin van Buuren", "Skrillex", "Illenium", "The Chainsmokers", "Don Diablo", "Afrojack", "Tiesto", "KSHMR", "DJ Snake", "Kygo", "Galantis", "Major Lazer", "Vicetone"
+        recentTerms: ["Alan Walker", "David Guetta", "Avicii", "Marshmello", "Steve Aoki", "R3HAB", "Armin van Buuren", "Skrillex", "Illenium"
                      ],
         candidateTerms: ["Skrillex", "Illenium", "The Chainsmokers"],
         searchedItems: [
@@ -279,14 +286,14 @@ struct SearchView_Preview: PreviewProvider {
 //        }
 //        .previewDisplayName("Loading")
         
-        UIViewControllerPreview {
-            UINavigationController(
-                rootViewController: SearchViewController().also { vc in
-                    vc.updateView(stateIdle.copy(status: .searching))
-                }
-            )
-        }
-        .previewDisplayName("타이핑")
+//        UIViewControllerPreview {
+//            UINavigationController(
+//                rootViewController: SearchViewController().also { vc in
+//                    vc.updateView(stateIdle.copy(status: .typing))
+//                }
+//            )
+//        }
+//        .previewDisplayName("뷰모델적용")
         
         UIViewControllerPreview {
             UINavigationController(

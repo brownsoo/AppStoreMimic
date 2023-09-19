@@ -58,7 +58,7 @@ extension SearchResultsTableViewController {
     
     private func updateView(_ state: SearchViewState) {
         switch state.status {
-            case .searching:
+            case .typing:
                 self.updateData(state.candidateTerms.map({ CandidateItemViewModel(text: $0)}))
             case .result:
                 self.updateData(state.searchedItems)

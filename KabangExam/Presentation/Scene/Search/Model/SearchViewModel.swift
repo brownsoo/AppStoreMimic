@@ -10,7 +10,7 @@ import Combine
 
 enum SearchStatus {
     case idle
-    case searching
+    case typing
     case loading
     case result
 }
@@ -27,6 +27,7 @@ protocol SearchViewModel: ViewModel, ResultItemCellDelegate {
     var currentState: SearchViewState { get }
     var stateChanges: AnyPublisher<SearchViewState, Never> { get }
     // -- in
+    func cancelSearch()
     func typed(_ text: String)
     func search(_ text: String)
 }

@@ -19,6 +19,13 @@ final class DefaultRepository {
 }
 
 extension DefaultRepository: iTunesRepository {
+    
+    func saveSearchTerm(_ term: String) -> Cancellable {
+        return Task {
+            await self.recentsCache.saveRecent(searchTerm: term)
+        }
+    }
+    
     func searchRecents(_ term: String, onResult: @escaping ([String]) -> Void) -> Cancellable {
         return Task { [weak self] in
             guard let this = self else {
@@ -32,6 +39,10 @@ extension DefaultRepository: iTunesRepository {
     func searchSoftware(_ term: String, onResult: @escaping (Result<[Software], Error>) -> Void) -> Cancellable {
         return Task { [weak self] in
             guard let this = self else {
+                return
+            }
+            if term.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                onResult(.success([]))
                 return
             }
             do {

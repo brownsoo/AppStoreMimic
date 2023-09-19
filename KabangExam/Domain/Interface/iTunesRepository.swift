@@ -10,11 +10,14 @@ import Combine
 
 protocol iTunesRepository {
     
+    func saveSearchTerm(_ term: String) -> Cancellable
+    
     /// 최근 검색어 조회
     /// - Parameters:
     ///   - term: 검색어
     ///   - onResult: 검색 결과
     /// - Returns: 조회 태스크
+    @discardableResult
     func searchRecents(_ term: String, onResult: @escaping([String]) -> Void) -> Cancellable
     
     
