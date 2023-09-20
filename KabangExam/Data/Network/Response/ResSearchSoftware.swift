@@ -48,7 +48,8 @@ struct ResSearchSoftware: ResSearchResult {
 extension ResSearchSoftware {
     func toDomain() -> Software {
         return .init(id: bundleId,
-                     icon: URL(string: artworkUrl512),
+                     icon: URL(string: artworkUrl100 ?? artworkUrl512),
+                     bigIcon: URL(string: artworkUrl512),
                      title: trackName,
                      subtitle: artistName,
                      description: description,

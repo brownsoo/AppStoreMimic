@@ -12,6 +12,7 @@ protocol DetailViewModel: ViewModel {
     // -- out
     var iconUrl: URL? { get }
     var title: String { get }
+    var subtitle: String { get }
     var userRating: Double { get }
     var userRatingCount: String { get }
     var genre: String { get }

@@ -13,6 +13,7 @@ final class DefaultDetailViewModel: BaseViewModel, DetailViewModel {
     // DetailViewModel ->
     var iconUrl: URL?
     var title: String
+    var subtitle: String
     var userRating: Double
     var userRatingCount: String
     var genre: String
@@ -27,8 +28,9 @@ final class DefaultDetailViewModel: BaseViewModel, DetailViewModel {
     private let _isMoreOpened = CurrentValueSubject<Bool, Never>(false)
     
     init(_ data: Software) {
-        iconUrl = data.icon
+        iconUrl = data.bigIcon
         title = data.title
+        subtitle = data.subtitle
         userRating = data.rating
         userRatingCount = data.ratingCount.readableCount()
         genre = data.genre

@@ -10,6 +10,7 @@ import Foundation
 struct Software: Identifiable {
     let id: String
     let icon: URL?
+    let bigIcon: URL?
     let title: String
     let subtitle: String
     let description: String

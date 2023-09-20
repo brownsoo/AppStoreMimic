@@ -43,14 +43,15 @@ final class SoftwareResultCell: UITableViewCell {
     
     func fill(with model: SoftwareItemViewModel) {
         self.id = model.id
-        ivIcon.kf.setImage(with: model.iconUrl,
-        placeholder: placeholderImage,
-        options: [
-            KingfisherOptionsInfoItem.processor(imageProcessor),
-            .scaleFactor(UIScreen.main.scale),
-            .transition(.fade(0.4)),
-            .cacheOriginalImage
-        ])
+        ivIcon.kf.setImage(
+            with: model.iconUrl,
+            placeholder: placeholderImage,
+            options: [
+                KingfisherOptionsInfoItem.processor(imageProcessor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(0.4)),
+                .cacheOriginalImage
+            ])
         lbTitle.text = model.title
         lbSubtitle.text = model.subtitle
         lbRatingCount.text = model.userRatingCount
@@ -124,16 +125,14 @@ extension SoftwareResultCell {
         let btInstall = UIButton(type: .system)
         btInstall.also { it in
             it.setTitle("받기", for: .normal)
-            it.titleLabel?.font = .boldSystemFont(ofSize: 14)
+            it.titleLabel?.font = .boldSystemFont(ofSize: 15)
             it.titleLabel?.adjustsFontSizeToFitWidth = true
-            it.sizeToFit()
             it.setContentHuggingPriority(.required, for: .horizontal)
             it.backgroundColor = .systemGray5
             it.layer.cornerRadius = 15
             it.contentEdgeInsets = UIEdgeInsets(top: 5, left: 20, bottom: 5, right: 20)
             contentView.addSubview(it)
             it.makeConstraints {
-                $0.heightAnchorConstraintTo(30)
                 $0.trailingAnchorConstraintToSuperview(-padding)
                 $0.centerYAnchorConstraintTo(ivIcon.centerYAnchor)
             }
