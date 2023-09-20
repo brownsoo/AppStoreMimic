@@ -1,12 +1,12 @@
 //
-//  KabangExamTests.swift
-//  KabangExamTests
+//  AppStoreSampleTests.swift
+//  AppStoreSampleTests
 //
 //  Created by hyonsoo on 2023/09/17.
 //
 
 import XCTest
-@testable import KabangExam
+@testable import AppStoreSample
 
 final class KabangExamTests: XCTestCase {
 

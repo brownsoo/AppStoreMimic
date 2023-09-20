@@ -1,6 +1,6 @@
 //
-//  KabangExamUITestsLaunchTests.swift
-//  KabangExamUITests
+//  AppStoreSampleUITestsLaunchTests.swift
+//  AppStoreSampleUITests
 //
 //  Created by hyonsoo on 2023/09/17.
 //
