@@ -11,7 +11,7 @@ import Kingfisher
 
 final class SoftwareResultCell: UITableViewCell {
     static let reuseIdentifier = String(describing: SoftwareResultCell.self)
-    static let estimatingHeight: CGFloat = 36
+    static let estimatingHeight: CGFloat = 100
     static private let iconSize = CGSize(width: 64, height: 64)
     static private let iconRounding = CGFloat(8)
     static private let screenshotRounding = CGFloat(8)
@@ -239,7 +239,7 @@ extension SoftwareResultCell {
                 $0.leadingAnchorConstraintToSuperview(padding)
                 $0.trailingAnchorConstraintToSuperview(-padding)
                 $0.topAnchorConstraintTo(infoStack.bottomAnchor, constant: 10)
-                $0.bottomAnchorConstraintToSuperview(-padding)?.priority = .fittingSizeLevel
+                $0.bottomAnchorConstraintToSuperview(-padding)?.priority = .defaultHigh
             }
             for _ in 0..<3 {
                 let iv = UIImageView()

@@ -22,7 +22,7 @@ struct SearchViewState {
     var searchedItems: [SoftwareItemViewModel]
 }
 
-protocol SearchViewModel: ViewModel, ResultItemCellDelegate {
+protocol SearchViewModel: ViewModel {
     // -- out
     var currentState: SearchViewState { get }
     var stateChanges: AnyPublisher<SearchViewState, Never> { get }
@@ -30,4 +30,5 @@ protocol SearchViewModel: ViewModel, ResultItemCellDelegate {
     func cancelSearch()
     func typed(_ text: String)
     func search(_ text: String)
+    func showDetailView(id: String)
 }

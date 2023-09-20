@@ -8,5 +8,6 @@
 import Foundation
 
 protocol ResultItemCellDelegate: AnyObject {
-    func didClickResultItemCell(id: String?) -> Void
+    func didClickCandidateItemCell(text: String) -> Void
+    func didClickResultItemCell(id: String) -> Void
 }

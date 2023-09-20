@@ -8,14 +8,10 @@
 import UIKit
 import SwiftUI
 import Combine
-//protocol SearchResultsTableDelegate: AnyObject {
-//    func didSelectCandidate(_ text: String) -> Void
-//    func didSelectResult(id: String) -> Void
-//}
 
 final class SearchResultsTableViewController: UITableViewController {
     
-    // weak var searchResultDelegate: SearchResultsTableDelegate?
+    weak var resultCellDelegate: ResultItemCellDelegate?
     weak var viewModel: SearchViewModel?
     
     private lazy var dataSource = makeDataSource()
@@ -32,6 +28,8 @@ final class SearchResultsTableViewController: UITableViewController {
             it.register(CandidateSearchCell.self, forCellReuseIdentifier: CandidateSearchCell.reuseIdentifier)
             it.register(SoftwareResultCell.self, forCellReuseIdentifier: SoftwareResultCell.reuseIdentifier)
         }
+        
+        bindData()
     }
     
 }
@@ -58,9 +56,11 @@ extension SearchResultsTableViewController {
     
     private func updateView(_ state: SearchViewState) {
         switch state.status {
-            case .typing:
+            case .typing, .idle:
+                tableView.estimatedRowHeight = CandidateSearchCell.estimatingHeight
                 self.updateData(state.candidateTerms.map({ CandidateItemViewModel(text: $0)}))
             case .result:
+                tableView.estimatedRowHeight = SoftwareResultCell.estimatingHeight
                 self.updateData(state.searchedItems)
             default:
                 break
@@ -74,12 +74,12 @@ extension SearchResultsTableViewController {
                 case let itemModel as CandidateItemViewModel:
                     let cell = tableView.dequeueReusableCell(withIdentifier: CandidateSearchCell.reuseIdentifier) as! CandidateSearchCell
                     cell.fill(with: itemModel.text)
-                    cell.delegate = self?.viewModel
+                    cell.delegate = self?.resultCellDelegate
                     return cell
                 case let itemModel as SoftwareItemViewModel:
                     let cell = tableView.dequeueReusableCell(withIdentifier: SoftwareResultCell.reuseIdentifier) as! SoftwareResultCell
                     cell.fill(with: itemModel)
-                    cell.delegate = self?.viewModel
+                    cell.delegate = self?.resultCellDelegate
                     return cell
                 default:
                     return UITableViewCell()

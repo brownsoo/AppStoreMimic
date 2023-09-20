@@ -39,12 +39,10 @@ extension CandidateSearchCell {
     
     @objc
     private func didClick() {
-        delegate?.didClickResultItemCell(id: lbTitle.text)
+        delegate?.didClickCandidateItemCell(text: lbTitle.text ?? "")
     }
     
     private func setupViews() {
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-        
         btTrans.also { it in
             it.setBackgroundImage(UIImage().solid(.systemGray6, width: 10, height: 10).resizableImage(withCapInsets: .zero), for: .highlighted)
             it.addTarget(self, action: #selector(didClick), for: .touchUpInside)

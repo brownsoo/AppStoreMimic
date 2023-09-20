@@ -33,7 +33,7 @@ final class DefaultSearchViewModel: BaseViewModel {
         self._stateChanges = CurrentValueSubject(SearchViewState(status: .idle, recentTerms: [], candidateTerms: [], searchedItems: []))
     }
     
-    func load() {
+    override func load() {
         loadRecents()
     }
     
@@ -115,11 +115,7 @@ extension DefaultSearchViewModel: SearchViewModel {
         })
     }
     
-    // MARK: ResultItemCellDelegate
-    func didClickResultItemCell(id: String?) {
-        guard let id = id else {
-            return
-        }
+    func showDetailView(id: String) {
         if let selected = self.resultItems.first(where: { $0.id == id }) {
             actions.showSoftwareDetail(selected)
         }

@@ -34,7 +34,7 @@ struct ResSearchSoftware: ResSearchResult {
     let releaseNotes: String?
     let screenshotUrls: [String]
     let sellerName: String
-    let sellerUrl: String
+    let sellerUrl: String?
     /// title
     let trackName: String
     let trackViewUrl: String

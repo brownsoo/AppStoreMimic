@@ -19,11 +19,12 @@ class SearchListViewController: UIViewController {
     
     var viewModel: SearchViewModel?
 
-    private let recentsTableView = UITableView()
     private lazy var recentsDataSource = makeDataSource()
+    private lazy var activityView = UIActivityIndicatorView(style: .large)
+    
+    private let recentsTableView = UITableView()
     private var searchController: UISearchController?
     private let resultVc = SearchResultsTableViewController()
-    private lazy var activityView = UIActivityIndicatorView(style: .large)
     private var typingPublisher = PassthroughSubject<String, Never>()
     private var cancelBag = Set<AnyCancellable>()
     
@@ -35,6 +36,18 @@ class SearchListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindData()
+        viewModel?.load()
+    }
+}
+
+//MARK: -- 결과 셀 선택 처리
+extension SearchListViewController: ResultItemCellDelegate {
+    func didClickCandidateItemCell(text: String) {
+        autoSelectSearchTerm(text)
+    }
+    
+    func didClickResultItemCell(id: String) {
+        viewModel?.showDetailView(id: id)
     }
 }
 
@@ -44,10 +57,11 @@ extension SearchListViewController: Alertable {
         showAlert(title: "앗!!", message: message)
     }
 }
-
+// MARK: -- 뷰 구성, 바인딩
 extension SearchListViewController {
     
     fileprivate func updateView(_ state: SearchViewState) {
+        foot("\(state.status)")
         switch state.status {
             case .idle:
                 activityView.isHidden = true
@@ -57,11 +71,12 @@ extension SearchListViewController {
                 recentsSnap.appendItems(state.recentTerms, toSection: 0)
                 self.recentsDataSource.apply(recentsSnap, animatingDifferences: false)
                 // navigationItem.largeTitleDisplayMode = .automatic
+                foot("\(state.recentTerms)")
                 break
             case .typing:
                 //navigationItem.largeTitleDisplayMode = .never
                 activityView.isHidden = true
-//                resultVc.updateData(state.candidateTerms.map({ CandidateItemViewModel(text: $0)}))
+                //resultVc.updateData(state.candidateTerms.map({ CandidateItemViewModel(text: $0)}))
             case .loading:
                 if activityView.isHidden {
                     activityView.isHidden = false
@@ -70,6 +85,7 @@ extension SearchListViewController {
                 break
             case .result:
                 activityView.isHidden = true
+                // resultVc.updateData(state.searchedItems)
                 break
         }
     }
@@ -94,7 +110,7 @@ extension SearchListViewController {
             .sink { self.showError($0) }
             .store(in: &cancelBag)
         
-        typingPublisher.throttle(for: 500, scheduler: RunLoop.main, latest: true)
+        typingPublisher.throttle(for: 0.5, scheduler: RunLoop.main, latest: true)
             .sink {
                 vm.typed($0)
             }
@@ -102,16 +118,20 @@ extension SearchListViewController {
     }
     
     private func setupViews() {
+        
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.definesPresentationContext = true
+        //self.definesPresentationContext = true
+        self.view.backgroundColor = .systemBackground
+        
         // TODO: 큰얼굴아이콘 
         let profileIcon = UIImage(systemName: "person.circle")
         let barBt = UIBarButtonItem(customView: UIImageView(image: profileIcon))
         self.navigationItem.rightBarButtonItem = barBt
         // TODO: result controller
         
-        // 검색어 제안
-        // resultVc.searchResultDelegate = self
+        // 검색 결과 셀 선택 델리게이트
+        resultVc.resultCellDelegate = self
+        // 뷰 모델 공유
         resultVc.viewModel = self.viewModel
         
         // 검색바 구성
@@ -122,6 +142,7 @@ extension SearchListViewController {
         searchController.searchResultsUpdater = self
         searchController.showsSearchResultsController = true
         searchController.delegate = self
+        searchController.view.backgroundColor = .systemBackground
         self.searchController = searchController
         
         self.navigationItem.searchController = searchController
@@ -149,25 +170,28 @@ extension SearchListViewController {
             $0.centerYAnchorConstraintToSuperview()
         }
     }
+    
+    /// 검색어 선택으로 검색
+    private func autoSelectSearchTerm(_ text: String) {
+        searchController?.searchBar.becomeFirstResponder()
+        searchController?.searchBar.text = text
+        viewModel?.search(text)
+    }
 }
 
 
 extension SearchListViewController: UISearchControllerDelegate {
     func willPresentSearchController(_ searchController: UISearchController) {
         foot("")
-        //viewModel?.enterSearch()
     }
     func willDismissSearchController(_ searchController: UISearchController) {
         foot("")
-        //viewModel?.exitSearch()
     }
 }
 
 extension SearchListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text ?? ""
-        debugPrint(searchText)
-        //viewModel?.typed(searchController.searchBar.text ?? "")
         typingPublisher.send(searchText)
     }
 }
@@ -188,22 +212,20 @@ extension SearchListViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else {
             return
         }
-        debugPrint("search \(text)")
+        foot("search \(text)")
         viewModel?.search(text)
     }
 }
 
 extension SearchListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let state = viewModel?.currentState.status ?? .idle
-        if viewModel == nil || state != .idle {
+        if let recents = viewModel?.currentState.recentTerms, !recents.isEmpty {
             let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: RecentsHeaderCell.reuseIdentifier)!
             return cell
         }
@@ -213,8 +235,9 @@ extension SearchListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let snap = recentsDataSource.snapshot()
         let text = snap.itemIdentifiers[indexPath.row]
-        viewModel?.search(text)
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        autoSelectSearchTerm(text)
     }
 }
 
@@ -270,7 +293,7 @@ struct SearchView_Preview: PreviewProvider {
         
 //        UIViewControllerPreview {
 //            UINavigationController(
-//                rootViewController: SearchViewController().also { vc in
+//                rootViewController: SearchListViewController().also { vc in
 //                    vc.updateView(stateIdle.copy(status: .result))
 //                }
 //            )
@@ -302,6 +325,17 @@ struct SearchView_Preview: PreviewProvider {
                 }
             )
         }
-        .previewDisplayName("기본상태")
+        .previewDisplayName("Light")
+        .preferredColorScheme(.light)
+        
+        UIViewControllerPreview {
+            UINavigationController(
+                rootViewController: SearchListViewController().also { vc in
+                    vc.updateView(stateIdle)
+                }
+            )
+        }
+        .previewDisplayName("Dark")
+        .preferredColorScheme(.dark)
     }
 }

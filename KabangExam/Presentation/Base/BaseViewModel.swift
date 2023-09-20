@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol ViewModel {
+protocol ViewModel: AnyObject {
     // -- out
     var errorMessages: AnyPublisher<String, Never> { get }
     var alertMesssges: AnyPublisher<String, Never> { get }
@@ -17,11 +17,6 @@ protocol ViewModel {
     func load() -> Void
 }
 
-extension ViewModel {
-    func load() {}
-}
-
-@MainActor
 class BaseViewModel: ViewModel {
     private let _errorMessages = PassthroughSubject<String, Never>()
     nonisolated var errorMessages: AnyPublisher<String, Never> {
@@ -40,6 +35,9 @@ class BaseViewModel: ViewModel {
             work.cancel()
         }
         cancellables.removeAll()
+    }
+    
+    func load() {
     }
     
     func alertMessage(_ message: String) {

@@ -62,6 +62,9 @@ final class DetailViewController: UIViewController {
 
 extension DetailViewController {
     private func setupViews() {
+        
+        view.backgroundColor = .systemBackground
+        
         let padding = CGFloat(20)
         
         let scrollView = UIScrollView()
