@@ -24,6 +24,7 @@ final class DefaultSearchViewModel: BaseViewModel {
         }
     }
     private let mainQueue = DispatchQueue.main
+    private var resultItems: [Software] = []
     private let actions: SearchListViewActions
     
     init(repository: iTunesRepository, actions: SearchListViewActions) {
@@ -100,6 +101,7 @@ extension DefaultSearchViewModel: SearchViewModel {
             switch result {
                 case .success(let items):
                     state.searchedItems = items.map { SoftwareItemViewModel(model: $0) }
+                    this.resultItems = items
                 case .failure(let error):
                     if let e = error.asAppError, case AppError.contentNotChanged = e {
                         // not changed
@@ -107,6 +109,7 @@ extension DefaultSearchViewModel: SearchViewModel {
                         this.handleError(error)
                     }
                     state.searchedItems = []
+                    this.resultItems = []
             }
             this._stateChanges.send(state)
         })
@@ -117,11 +120,8 @@ extension DefaultSearchViewModel: SearchViewModel {
         guard let id = id else {
             return
         }
-        if let current = self.currentState.searchedItems.first(where: { $0.id == id }) {
-            actions.showSoftwareDetail
-            
+        if let selected = self.resultItems.first(where: { $0.id == id }) {
+            actions.showSoftwareDetail(selected)
         }
     }
-    
-    
 }

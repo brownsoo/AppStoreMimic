@@ -17,3 +17,16 @@ final class DetailViewController: UIViewController {
     
     var viewModel: DetailViewModel?
 }
+
+
+// MARK: -- 미리보기
+
+struct DetailViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        UIViewControllerPreview {
+            DetailViewController.create(
+                viewModel: DefaultDetailViewModel(Software.sample())
+            )
+        }
+    }
+}

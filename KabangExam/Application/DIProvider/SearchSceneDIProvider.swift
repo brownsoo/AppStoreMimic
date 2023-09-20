@@ -22,25 +22,25 @@ final class SearchSceneDIProvider {
     }
     
     func makeSearchListViewModel(actions: SearchListViewActions) -> SearchViewModel {
-        DefaultSearchViewModel(repository: makeRepository(), actions: actions)
+        DefaultSearchViewModel(repository: self.makeRepository(), actions: actions)
+    }
+    
+    func makeDetailViewModel(data: Software) -> DetailViewModel {
+        DefaultDetailViewModel(data)
     }
     
     func makeSearchFlowCoordinator(nc: UINavigationController) -> SearchFlowCoordinator {
-        SearchFlowCoordinator(
-            navigationController: nc,
-            dependencies: self)
+        SearchFlowCoordinator(navigationController: nc, dependencies: self)
     }
 }
 
 extension SearchSceneDIProvider: SearchFlowCoordinatorDependencies {
     func makeSearchView(actions: SearchListViewActions) -> UIViewController {
         SearchListViewController.create(
-            viewModel: makeSearchListViewModel(actions: actions))
+            viewModel: self.makeSearchListViewModel(actions: actions))
     }
     
     func makeDetailView(data: Software) -> UIViewController {
-        <#code#>
+        DetailViewController.create(viewModel: self.makeDetailViewModel(data: data))
     }
-    
-    
 }
