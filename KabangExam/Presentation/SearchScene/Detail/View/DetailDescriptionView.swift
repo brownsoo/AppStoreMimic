@@ -32,26 +32,32 @@ class DetailDescriptionView: UIView {
     
     private let btMore = UIButton(type: .system)
     private let lbDesc = UILabel()
-    private let font = UIFont.systemFont(ofSize: 14)
+    private let font = UIFont.systemFont(ofSize: 16)
     private let lineSpacing = CGFloat(7)
     private var isMoreOpen = false
     
     private func setupViews() {
-        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        let line = UIView()
+        line.backgroundColor = .systemGray3
+        addSubview(line)
+        line.makeConstraints { it in
+            it.heightAnchorConstraintTo(1)
+            it.topAnchorConstraintToSuperview()
+            it.leadingAnchorConstraintToSuperview()
+            it.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        }
         
         addSubview(lbDesc)
         lbDesc.font = font
         lbDesc.textColor = .label
         lbDesc.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
         lbDesc.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
-        lbDesc.setContentCompressionResistancePriority(.required, for: .vertical)
-        lbDesc.setContentHuggingPriority(.required, for: .vertical)
         lbDesc.makeConstraints { it in
             it.leadingAnchorConstraintToSuperview()
             it.trailingAnchorConstraintToSuperview()?.priority = .defaultHigh
-//            it.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-            it.topAnchorConstraintToSuperview()
-            it.bottomAnchorConstraintToSuperview()?.priority = .defaultHigh
+            it.topAnchorConstraintTo(line.bottomAnchor, constant: 14)
+            it.bottomAnchorConstraintToSuperview()?.priority = .fittingSizeLevel
         }
         
         addSubview(btMore)
@@ -64,11 +70,6 @@ class DetailDescriptionView: UIView {
             it.trailingAnchorConstraintToSuperview()
             it.bottomAnchorConstraintToSuperview()
         }
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        foot("")
     }
     
     @objc
@@ -118,13 +119,11 @@ class DetailDescriptionView: UIView {
 
 struct DetailDescriptionView_Preview: PreviewProvider {
     static var previews: some View {
-        ScrollView {
-            UIViewPreview {
-                DetailDescriptionView()
-                    .also { v in
-                        v.text = Software.sample().description
-                    }
-            }
+        UIViewPreview {
+            DetailDescriptionView()
+                .also { v in
+                    v.text = Software.sample().description
+                }
         }
     }
 }

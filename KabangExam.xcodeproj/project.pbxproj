@@ -13,6 +13,7 @@
 		17116EA52ABACA5500BAF2B6 /* DebugLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17116EA42ABACA5500BAF2B6 /* DebugLabel.swift */; };
 		17116EA72ABAE24000BAF2B6 /* DetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17116EA62ABAE24000BAF2B6 /* DetailDescriptionView.swift */; };
 		17116EA92ABAF8BE00BAF2B6 /* DetailReleaseNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17116EA82ABAF8BE00BAF2B6 /* DetailReleaseNoteView.swift */; };
+		17116EAB2ABB018A00BAF2B6 /* UiUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17116EAA2ABB018A00BAF2B6 /* UiUtil.swift */; };
 		1740D95E2AB8280E003C2D69 /* SoftwareResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D95D2AB8280E003C2D69 /* SoftwareResultCell.swift */; };
 		1740D9602AB83150003C2D69 /* RecentsSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D95F2AB83150003C2D69 /* RecentsSearchCell.swift */; };
 		1740D9632AB839B2003C2D69 /* CandidateSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740D9622AB839B2003C2D69 /* CandidateSearchCell.swift */; };
@@ -105,6 +106,7 @@
 		17116EA42ABACA5500BAF2B6 /* DebugLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLabel.swift; sourceTree = "<group>"; };
 		17116EA62ABAE24000BAF2B6 /* DetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDescriptionView.swift; sourceTree = "<group>"; };
 		17116EA82ABAF8BE00BAF2B6 /* DetailReleaseNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReleaseNoteView.swift; sourceTree = "<group>"; };
+		17116EAA2ABB018A00BAF2B6 /* UiUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiUtil.swift; sourceTree = "<group>"; };
 		1740D95D2AB8280E003C2D69 /* SoftwareResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftwareResultCell.swift; sourceTree = "<group>"; };
 		1740D95F2AB83150003C2D69 /* RecentsSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsSearchCell.swift; sourceTree = "<group>"; };
 		1740D9622AB839B2003C2D69 /* CandidateSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateSearchCell.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 				1740D96E2AB84021003C2D69 /* Int+CountFormat.swift */,
 				177BA9212AB94A5300560073 /* UIViewControllerPreview.swift */,
 				17116EA42ABACA5500BAF2B6 /* DebugLabel.swift */,
+				17116EAA2ABB018A00BAF2B6 /* UiUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				1740D9722AB84312003C2D69 /* Software+sample.swift in Sources */,
 				17BEF1CC2AB70C3900249C5E /* Software.swift in Sources */,
 				17BEF1B52AB6E4C600249C5E /* ResponseDecoder.swift in Sources */,
+				17116EAB2ABB018A00BAF2B6 /* UiUtil.swift in Sources */,
 				17BEF1D12AB7122800249C5E /* DefaultRepository.swift in Sources */,
 				17BEF1FB2AB9F7E700249C5E /* DefaultDetailViewModel.swift in Sources */,
 				17BEF16C2AB6DFFB00249C5E /* SceneDelegate.swift in Sources */,

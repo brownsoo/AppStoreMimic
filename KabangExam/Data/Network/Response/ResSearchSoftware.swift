@@ -59,6 +59,7 @@ extension ResSearchSoftware {
                      contentAdvisoryRating: contentAdvisoryRating,
                      genre: genres.first ?? "일반",
                      sellerName: sellerName,
+                     version: version,
                      releaseNote: releaseNotes)
     }
 }

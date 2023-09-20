@@ -157,7 +157,7 @@ extension DetailHeadView {
             sv.makeConstraints {
                 $0.leadingAnchorConstraintToSuperview(padding)
                 $0.trailingAnchorConstraintToSuperview(-padding)
-                $0.topAnchorConstraintTo(ivIcon.bottomAnchor, constant: 10)
+                $0.topAnchorConstraintTo(ivIcon.bottomAnchor, constant: 16)
                 $0.bottomAnchorConstraintToSuperview(-padding)?.priority = .fittingSizeLevel
                 $0.heightAnchorConstraintTo(infoBoxHeight)
             }

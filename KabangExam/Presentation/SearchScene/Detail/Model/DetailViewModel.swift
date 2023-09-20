@@ -20,8 +20,6 @@ protocol DetailViewModel: ViewModel {
     var seller: String { get }
     var screenshots: [URL] { get }
     var description: String { get }
+    var version: String { get }
     var releaseNote: String? { get }
-    var isMoreOpened: AnyPublisher<Bool, Never> { get }
-    // -- in
-    func moreDescription() -> Void
 }

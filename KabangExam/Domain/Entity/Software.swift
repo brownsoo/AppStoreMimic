@@ -20,5 +20,6 @@ struct Software: Identifiable {
     let contentAdvisoryRating: String
     let genre: String
     let sellerName: String
+    let version: String
     let releaseNote: String?
 }

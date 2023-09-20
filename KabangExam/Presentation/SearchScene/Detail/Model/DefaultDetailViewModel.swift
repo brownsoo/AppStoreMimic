@@ -20,14 +20,11 @@ final class DefaultDetailViewModel: BaseViewModel, DetailViewModel {
     var contentAdvisoryRating: String
     var screenshots: [URL]
     var description: String
+    var version: String
     var releaseNote: String?
     var seller: String
     
-    var isMoreOpened: AnyPublisher<Bool, Never> {
-        _isMoreOpened.eraseToAnyPublisher()
-    }
     // <--
-    private let _isMoreOpened = CurrentValueSubject<Bool, Never>(false)
     
     init(_ data: Software) {
         iconUrl = data.bigIcon
@@ -39,12 +36,8 @@ final class DefaultDetailViewModel: BaseViewModel, DetailViewModel {
         contentAdvisoryRating = data.contentAdvisoryRating
         screenshots = data.screenshots
         description = data.description
+        version = data.version
         releaseNote = data.releaseNote
         seller = data.sellerName
-        _isMoreOpened.value = data.description.count < 100
-    }
-    
-    func moreDescription() {
-        _isMoreOpened.send(true)
     }
 }

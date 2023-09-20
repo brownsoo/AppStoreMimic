@@ -29,7 +29,9 @@ final class DetailViewController: UIViewController {
     private var screenshotHeight: CGFloat {
         screenshotWidth * screenRatio
     }
-    private let descriptionView = DetailDescriptionView()
+    private lazy var descriptionView = DetailDescriptionView()
+    private lazy var releaseView = DetailReleaseNoteView()
+    private var releaseHiddenConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +53,9 @@ final class DetailViewController: UIViewController {
             }
             
             descriptionView.text = vm.description
+            releaseView.update(version: vm.version, note: vm.releaseNote ?? "")
+            releaseView.isHidden = vm.releaseNote == nil
+            releaseHiddenConstraint?.isActive = vm.releaseNote == nil
         }
     }
 }
@@ -62,13 +67,13 @@ extension DetailViewController {
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
         scrollView.makeConstraints { it in
-            //it.widthAnchorConstraintTo(view.bounds.width)
             it.edgesConstraintTo(view.safeAreaLayoutGuide, edges: .all)
         }
         
         let contentView = UIView()
         scrollView.addSubview(contentView)
         contentView.makeConstraints { it in
+            it.widthAnchorConstraintTo(view.bounds.width)
             it.edgesConstraintToSuperview(edges: .horizontal)
             it.topAnchorConstraintToSuperview()
             it.bottomAnchorConstraintToSuperview()?.priority = .defaultHigh
@@ -81,7 +86,34 @@ extension DetailViewController {
             it.topAnchorConstraintToSuperview()
         }
         
+        // 버전 정보
+        contentView.addSubview(releaseView)
+        releaseView.setContentHuggingPriority(.required, for: .vertical)
+        releaseView.makeConstraints { it in
+            it.leadingAnchorConstraintToSuperview(padding)
+            it.trailingAnchorConstraintToSuperview(-padding)
+            it.topAnchorConstraintTo(headView.bottomAnchor)
+        }
+        
         // 스크린샷
+        let lineScreenshot = UiUtil.makeLine()
+        contentView.addSubview(lineScreenshot)
+        lineScreenshot.makeConstraints { it in
+            releaseHiddenConstraint = it.topAnchorConstraintTo(headView.bottomAnchor)
+            releaseHiddenConstraint?.priority = .required
+            it.topAnchorConstraintTo(releaseView.bottomAnchor)?.priority = .defaultHigh
+            it.heightAnchorConstraintTo(1)
+            it.leadingAnchorConstraintToSuperview(padding)
+            it.trailingAnchorConstraintToSuperview(-padding)
+        }
+        
+        let lbScreenshotTitle = UiUtil.makeDetailHeadLabel(text: "미리보기")
+        contentView.addSubview(lbScreenshotTitle)
+        lbScreenshotTitle.makeConstraints { it in
+            it.topAnchorConstraintTo(lineScreenshot.bottomAnchor, constant: 10)
+            it.leadingAnchorConstraintToSuperview(padding)
+        }
+        
         let svScreenshots = UIScrollView()
         svScreenshots.showsHorizontalScrollIndicator = false
         svScreenshots.showsVerticalScrollIndicator = false
@@ -89,7 +121,7 @@ extension DetailViewController {
         svScreenshots.makeConstraints {
             $0.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
             $0.heightAnchorConstraintTo(screenshotHeight)
-            $0.topAnchorConstraintTo(headView.bottomAnchor, constant: 0)
+            $0.topAnchorConstraintTo(lbScreenshotTitle.bottomAnchor, constant: 10)
             $0.edgesConstraintToSuperview(edges: .horizontal)
         }
         
@@ -109,24 +141,12 @@ extension DetailViewController {
         
         // 설명
         
-        let line = UIView()
-        line.backgroundColor = .systemGray3
-        contentView.addSubview(line)
-        line.makeConstraints {
-            $0.setContentHuggingPriority(.required, for: .vertical)
-            $0.setContentCompressionResistancePriority(.required, for: .vertical)
-            $0.heightAnchorConstraintTo(1)
-            $0.leadingAnchorConstraintToSuperview()
-            $0.trailingAnchorConstraintToSuperview()
-            $0.topAnchorConstraintTo(svScreenshots.bottomAnchor, constant: padding)
-        }
-        
         descriptionView.also { box in
             contentView.addSubview(box)
             box.makeConstraints {
                 $0.heightAnchorConstraintTo(100).priority = .defaultLow
                 $0.edgesConstraintToSuperview(edges: .horizontal, withInset: padding)
-                $0.topAnchorConstraintTo(line.bottomAnchor, constant: padding)
+                $0.topAnchorConstraintTo(svScreenshots.bottomAnchor, constant: padding)
                 $0.bottomAnchorConstraintToSuperview(-100)?.priority = .defaultHigh
             }
         }
