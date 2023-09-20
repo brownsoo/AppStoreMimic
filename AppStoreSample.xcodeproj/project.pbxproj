@@ -36,9 +36,9 @@
 		17BEF16E2AB6DFFB00249C5E /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF16D2AB6DFFB00249C5E /* SearchListViewController.swift */; };
 		17BEF1732AB6DFFC00249C5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17BEF1722AB6DFFC00249C5E /* Assets.xcassets */; };
 		17BEF1762AB6DFFC00249C5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17BEF1742AB6DFFC00249C5E /* LaunchScreen.storyboard */; };
-		17BEF1812AB6DFFC00249C5E /* KabangExamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1802AB6DFFC00249C5E /* KabangExamTests.swift */; };
-		17BEF18B2AB6DFFC00249C5E /* KabangExamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF18A2AB6DFFC00249C5E /* KabangExamUITests.swift */; };
-		17BEF18D2AB6DFFC00249C5E /* KabangExamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF18C2AB6DFFC00249C5E /* KabangExamUITestsLaunchTests.swift */; };
+		17BEF1812AB6DFFC00249C5E /* SampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1802AB6DFFC00249C5E /* SampleAppTests.swift */; };
+		17BEF18B2AB6DFFC00249C5E /* SampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF18A2AB6DFFC00249C5E /* SampleAppUITests.swift */; };
+		17BEF18D2AB6DFFC00249C5E /* SampleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF18C2AB6DFFC00249C5E /* SampleAppUITestsLaunchTests.swift */; };
 		17BEF1A22AB6E46300249C5E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 17BEF1A12AB6E46300249C5E /* Alamofire */; };
 		17BEF1B02AB6E4C600249C5E /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A42AB6E4C600249C5E /* NetworkResponse.swift */; };
 		17BEF1B12AB6E4C600249C5E /* ApiEndpint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A52AB6E4C600249C5E /* ApiEndpint.swift */; };
@@ -130,10 +130,10 @@
 		17BEF1752AB6DFFC00249C5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17BEF1772AB6DFFC00249C5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17BEF17C2AB6DFFC00249C5E /* AppStoreSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		17BEF1802AB6DFFC00249C5E /* KabangExamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KabangExamTests.swift; sourceTree = "<group>"; };
+		17BEF1802AB6DFFC00249C5E /* SampleAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppTests.swift; sourceTree = "<group>"; };
 		17BEF1862AB6DFFC00249C5E /* AppStoreSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		17BEF18A2AB6DFFC00249C5E /* KabangExamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KabangExamUITests.swift; sourceTree = "<group>"; };
-		17BEF18C2AB6DFFC00249C5E /* KabangExamUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KabangExamUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		17BEF18A2AB6DFFC00249C5E /* SampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppUITests.swift; sourceTree = "<group>"; };
+		17BEF18C2AB6DFFC00249C5E /* SampleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		17BEF1A42AB6E4C600249C5E /* NetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		17BEF1A52AB6E4C600249C5E /* ApiEndpint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEndpint.swift; sourceTree = "<group>"; };
 		17BEF1A62AB6E4C600249C5E /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
@@ -298,8 +298,8 @@
 			children = (
 				17BEF1C82AB7071000249C5E /* README.md */,
 				17BEF1682AB6DFFB00249C5E /* SampleApp */,
-				17BEF17F2AB6DFFC00249C5E /* KabangExamTests */,
-				17BEF1892AB6DFFC00249C5E /* KabangExamUITests */,
+				17BEF17F2AB6DFFC00249C5E /* SampleAppTests */,
+				17BEF1892AB6DFFC00249C5E /* SampleAppUITests */,
 				17BEF1672AB6DFFB00249C5E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -330,21 +330,21 @@
 			path = SampleApp;
 			sourceTree = "<group>";
 		};
-		17BEF17F2AB6DFFC00249C5E /* KabangExamTests */ = {
+		17BEF17F2AB6DFFC00249C5E /* SampleAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				17BEF1802AB6DFFC00249C5E /* KabangExamTests.swift */,
+				17BEF1802AB6DFFC00249C5E /* SampleAppTests.swift */,
 			);
-			path = KabangExamTests;
+			path = SampleAppTests;
 			sourceTree = "<group>";
 		};
-		17BEF1892AB6DFFC00249C5E /* KabangExamUITests */ = {
+		17BEF1892AB6DFFC00249C5E /* SampleAppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				17BEF18A2AB6DFFC00249C5E /* KabangExamUITests.swift */,
-				17BEF18C2AB6DFFC00249C5E /* KabangExamUITestsLaunchTests.swift */,
+				17BEF18A2AB6DFFC00249C5E /* SampleAppUITests.swift */,
+				17BEF18C2AB6DFFC00249C5E /* SampleAppUITestsLaunchTests.swift */,
 			);
-			path = KabangExamUITests;
+			path = SampleAppUITests;
 			sourceTree = "<group>";
 		};
 		17BEF1992AB6E3CE00249C5E /* Application */ = {
@@ -612,7 +612,6 @@
 					};
 					17BEF17B2AB6DFFC00249C5E = {
 						CreatedOnToolsVersion = 14.3.1;
-						TestTargetID = 17BEF1652AB6DFFB00249C5E;
 					};
 					17BEF1852AB6DFFC00249C5E = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -746,7 +745,7 @@
 			files = (
 				1740D9742AB847B5003C2D69 /* Software.swift in Sources */,
 				1740D9702AB84021003C2D69 /* Int+CountFormat.swift in Sources */,
-				17BEF1812AB6DFFC00249C5E /* KabangExamTests.swift in Sources */,
+				17BEF1812AB6DFFC00249C5E /* SampleAppTests.swift in Sources */,
 				1740D9732AB84312003C2D69 /* Software+sample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,8 +756,8 @@
 			files = (
 				17BEF1DC2AB7521F00249C5E /* RecentsStorage.swift in Sources */,
 				17BEF1DB2AB7521800249C5E /* DefaultRecentsStorage.swift in Sources */,
-				17BEF18B2AB6DFFC00249C5E /* KabangExamUITests.swift in Sources */,
-				17BEF18D2AB6DFFC00249C5E /* KabangExamUITestsLaunchTests.swift in Sources */,
+				17BEF18B2AB6DFFC00249C5E /* SampleAppUITests.swift in Sources */,
+				17BEF18D2AB6DFFC00249C5E /* SampleAppUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,18 +964,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = i.wish.happy.KabangExamTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.AppStoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppStoreSample.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppStoreSample";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -984,18 +984,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = i.wish.happy.KabangExamTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.AppStoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppStoreSample.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppStoreSample";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1007,7 +1008,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = i.wish.happy.KabangExamUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.AppStoreUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1024,7 +1025,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = i.wish.happy.KabangExamUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.AppStoreUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;

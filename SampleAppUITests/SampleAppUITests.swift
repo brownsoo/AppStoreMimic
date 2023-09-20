@@ -1,13 +1,13 @@
 //
-//  AppStoreSampleUITests.swift
-//  AppStoreSampleUITests
+//  SampleAppUITests.swift
+//  SampleAppUITests
 //
 //  Created by hyonsoo on 2023/09/17.
 //
 
 import XCTest
 
-final class KabangExamUITests: XCTestCase {
+final class SampleAppUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

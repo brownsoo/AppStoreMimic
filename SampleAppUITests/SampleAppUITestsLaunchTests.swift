@@ -1,13 +1,13 @@
 //
-//  AppStoreSampleUITestsLaunchTests.swift
-//  AppStoreSampleUITests
+//  SampleAppUITestsLaunchTests.swift
+//  SampleAppUITests
 //
 //  Created by hyonsoo on 2023/09/17.
 //
 
 import XCTest
 
-final class KabangExamUITestsLaunchTests: XCTestCase {
+final class SampleAppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
