@@ -26,13 +26,17 @@ final class SoftwareResultCell: UITableViewCell {
     }
     
     weak var delegate: ResultItemCellDelegate?
+    
     private var id: String? = nil
     
     private let btTrans = UIButton()
     private let ivIcon = UIImageView()
     private let lbTitle = UILabel()
+    private let lbSubtitle = UILabel()
     private let ratingView = RatingView()
     private let lbRatingCount = UILabel()
+    private let lbSeller = UILabel()
+    private let lbGenre = UILabel()
     private let svScreenshots = UIStackView()
     private let imageProcessor = DownsamplingImageProcessor(size: iconSize)
     private let placeholderImage = UIImage().solid(UIColor.systemGray5, width: 10, height: 10)
@@ -48,8 +52,12 @@ final class SoftwareResultCell: UITableViewCell {
             .cacheOriginalImage
         ])
         lbTitle.text = model.title
+        lbSubtitle.text = model.subtitle
         lbRatingCount.text = model.userRatingCount
         ratingView.rate = CGFloat(model.userRating)
+        lbSeller.text = model.sellerName
+        lbGenre.text = model.genre
+        
         svScreenshots.arrangedSubviews.enumerated().forEach {
             let index = $0.offset
             ($0.element as? UIImageView)?.also { iv in
@@ -65,9 +73,9 @@ final class SoftwareResultCell: UITableViewCell {
                 }
             }
         }
+        
+        setNeedsLayout()
     }
-    
-    
 }
 
 extension SoftwareResultCell {
@@ -89,9 +97,11 @@ extension SoftwareResultCell {
         btTrans.also { it in
             it.setBackgroundImage(UIImage().solid(.systemGray6, width: 10, height: 10).resizableImage(withCapInsets: .zero), for: .highlighted)
             it.addTarget(self, action: #selector(didClick), for: .touchUpInside)
+            it.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
+            it.setContentHuggingPriority(.fittingSizeLevel, for: .vertical)
             contentView.addSubview(it)
             it.makeConstraints {
-                $0.edgesConstraintToSuperview(edges: .all)
+                $0.edgesConstraintToSuperview(edges: .all, priority: .defaultLow)
             }
         }
         
@@ -129,39 +139,94 @@ extension SoftwareResultCell {
             }
         }
         
-        let svRating = UIStackView(arrangedSubviews: [ratingView, lbRatingCount])
-        svRating.axis = .horizontal
-        svRating.alignment = .center
-        svRating.spacing = 4
-        lbRatingCount.also {
-            $0.textColor = .secondaryLabel
-            $0.font = .systemFont(ofSize: 12)
-        }
-        
-        lbTitle.also { it in
-            it.font = .boldSystemFont(ofSize: 16)
-        }
-        let svHead = UIStackView(arrangedSubviews: [
-            lbTitle, svRating
-        ])
-        svHead.also { it in
+        // 타이틀 범위
+        lbTitle.font = .boldSystemFont(ofSize: 16)
+        lbSubtitle.textColor = UIColor.secondaryLabel
+        lbSubtitle.font = .systemFont(ofSize: 12)
+        let svTitle = UIStackView(arrangedSubviews: [lbTitle, lbSubtitle])
+        svTitle.also { it in
             it.isUserInteractionEnabled = false
             it.axis = .vertical
+            it.spacing = 2
             it.distribution = .equalCentering
-            it.alignment = .leading
-            it.setContentHuggingPriority(.defaultLow, for: .horizontal)
-            it.setContentHuggingPriority(.defaultLow, for: .vertical)
-            it.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+            it.setContentHuggingPriority(.required, for: .vertical)
             it.setContentCompressionResistancePriority(.required, for: .vertical)
             contentView.addSubview(it)
             it.makeConstraints {
                 $0.leadingAnchorConstraintTo(ivIcon.trailingAnchor, constant: 10)
                 $0.trailingAnchorConstraintTo(btInstall.leadingAnchor, constant: -10)
-                $0.topAnchorConstraintTo(ivIcon.topAnchor)
-                $0.bottomAnchorConstraintTo(ivIcon.bottomAnchor)
+                $0.centerYAnchorConstraintTo(ivIcon)
             }
         }
         
+        let infoFont = UIFont.boldSystemFont(ofSize: 12)
+        let infoColor = UIColor.systemGray
+        // 평가
+        lbRatingCount.also {
+            $0.font = infoFont
+            $0.textColor = infoColor
+        }
+        let rating = UIStackView(arrangedSubviews: [ratingView, lbRatingCount]).also { it in
+            it.axis = .horizontal
+            it.spacing = 2
+            it.setContentHuggingPriority(.required, for: .horizontal)
+            it.setContentHuggingPriority(.required, for: .vertical)
+            it.setContentCompressionResistancePriority(.required, for: .horizontal)
+            it.setContentCompressionResistancePriority(.required, for: .vertical)
+        }
+        
+        // 판매자
+        lbSeller.font = infoFont
+        lbSeller.textColor = infoColor
+        let seller = UIStackView(arrangedSubviews: [
+            UIImageView(image: UIImage(systemName: "person.crop.square")?
+                        .withRenderingMode(.alwaysOriginal)
+                        .withTintColor(infoColor)),
+            lbSeller
+        ]).also { it in
+            it.axis = .horizontal
+            it.spacing = 2
+            it.setContentHuggingPriority(.required, for: .horizontal)
+            it.setContentHuggingPriority(.required, for: .vertical)
+            it.setContentCompressionResistancePriority(.required, for: .horizontal)
+            it.setContentCompressionResistancePriority(.required, for: .vertical)
+        }
+        
+        // 장르
+        lbGenre.font = infoFont
+        lbGenre.textColor = infoColor
+        let genre = UIStackView(arrangedSubviews: [
+            UIImageView(image: UIImage(systemName: "person.crop.square")?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(infoColor)),
+            lbGenre
+        ]).also { it in
+            it.axis = .horizontal
+            it.spacing = 2
+            it.setContentHuggingPriority(.required, for: .horizontal)
+            it.setContentHuggingPriority(.required, for: .vertical)
+            it.setContentCompressionResistancePriority(.required, for: .horizontal)
+            it.setContentCompressionResistancePriority(.required, for: .vertical)
+        }
+        
+        // 하단 라인
+        let infoStack = UIStackView(arrangedSubviews: [rating, genre, seller]).also { it in
+            contentView.addSubview(it)
+            it.axis = .horizontal
+            it.alignment = .center
+            it.distribution = .equalSpacing
+            it.spacing = 4
+            it.isUserInteractionEnabled = false
+            it.setContentHuggingPriority(.required, for: .vertical)
+            it.setContentCompressionResistancePriority(.required, for: .vertical)
+            it.makeConstraints {
+                $0.leadingAnchorConstraintToSuperview(padding)
+                $0.trailingAnchorConstraintToSuperview(-padding)
+                $0.topAnchorConstraintTo(ivIcon.bottomAnchor, constant: 10)
+            }
+        }
+        
+        // 스크린샷
         let screenBounds = UIScreen.main.bounds
         let screenRatio = screenBounds.height / screenBounds.width
         let spacing: CGFloat = 10
@@ -180,8 +245,8 @@ extension SoftwareResultCell {
                 $0.heightAnchorConstraintTo(screenshotHeight)
                 $0.leadingAnchorConstraintToSuperview(padding)
                 $0.trailingAnchorConstraintToSuperview(-padding)
-                $0.topAnchorConstraintTo(ivIcon.bottomAnchor, constant: 20)
-                $0.bottomAnchorConstraintToSuperview(-padding)?.priority = .defaultHigh
+                $0.topAnchorConstraintTo(infoStack.bottomAnchor, constant: 20)
+                $0.bottomAnchorConstraintToSuperview(-padding)?.priority = .fittingSizeLevel
             }
             for _ in 0..<3 {
                 let iv = UIImageView()

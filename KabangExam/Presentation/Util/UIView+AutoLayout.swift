@@ -126,27 +126,38 @@ extension UIView {
     //MARK: To width, height
     
     @discardableResult
-    func widthAnchorConstraintTo(_ constant: CGFloat) -> NSLayoutConstraint {
+    func widthAnchorConstraintTo(_ constant: CGFloat, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         let layout = self.widthAnchor.constraint(equalToConstant: constant)
+        layout.priority = priority
         layout.isActive = true
         return layout
     }
     
     @discardableResult
-    func heightAnchorConstraintTo(_ constant: CGFloat) -> NSLayoutConstraint {
+    func heightAnchorConstraintTo(_ constant: CGFloat, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         let layout = self.heightAnchor.constraint(equalToConstant: constant)
+        layout.priority = priority
         layout.isActive = true
         return layout
     }
     
-    func sizeAnchorConstraintTo(_ constant: CGFloat)  {
-        self.heightAnchor.constraint(equalToConstant: constant).isActive = true
-        self.widthAnchor.constraint(equalToConstant: constant).isActive = true
+    func sizeAnchorConstraintTo(_ constant: CGFloat, priority: UILayoutPriority = .required)  {
+        let const = self.heightAnchor.constraint(equalToConstant: constant)
+        const.priority = priority
+        const.isActive = true
+        
+        let const2 = self.widthAnchor.constraint(equalToConstant: constant)
+        const2.priority = priority
+        const2.isActive = true
     }
     
-    func sizeAnchorConstraintTo(_ size: CGSize)  {
-        self.heightAnchor.constraint(equalToConstant: size.height).isActive = true
-        self.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+    func sizeAnchorConstraintTo(_ size: CGSize, priority: UILayoutPriority = .required)  {
+        let const = self.heightAnchor.constraint(equalToConstant: size.height)
+        const.priority = priority
+        const.isActive = true
+        let const2 = self.widthAnchor.constraint(equalToConstant: size.width)
+        const2.priority = priority
+        const2.isActive = true
     }
     
     //MARK:  to centerX, centerY

@@ -56,7 +56,8 @@ extension ResSearchSoftware {
                      rating: averageUserRatingForCurrentVersion,
                      ratingCount: userRatingCountForCurrentVersion,
                      contentAdvisoryRating: contentAdvisoryRating,
-                     genre: genres.first ?? "",
+                     genre: genres.first ?? "일반",
+                     sellerName: sellerName,
                      releaseNote: releaseNotes)
     }
 }
