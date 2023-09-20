@@ -12,7 +12,7 @@ import Kingfisher
 final class SoftwareResultCell: UITableViewCell {
     static let reuseIdentifier = String(describing: SoftwareResultCell.self)
     static let estimatingHeight: CGFloat = 36
-    static private let iconSize = CGSize(width: 60, height: 60)
+    static private let iconSize = CGSize(width: 64, height: 64)
     static private let iconRounding = CGFloat(8)
     static private let screenshotRounding = CGFloat(8)
     
@@ -37,7 +37,7 @@ final class SoftwareResultCell: UITableViewCell {
     private let lbRatingCount = UILabel()
     private let lbSeller = UILabel()
     private let lbGenre = UILabel()
-    private let svScreenshots = UIStackView()
+    private let stvScreenshots = UIStackView()
     private let imageProcessor = DownsamplingImageProcessor(size: iconSize)
     private let placeholderImage = UIImage().solid(UIColor.systemGray5, width: 10, height: 10)
     
@@ -59,7 +59,7 @@ final class SoftwareResultCell: UITableViewCell {
         lbSeller.text = model.sellerName
         lbGenre.text = model.genre
         
-        svScreenshots.arrangedSubviews.enumerated().forEach {
+        stvScreenshots.arrangedSubviews.enumerated().forEach {
             let index = $0.offset
             ($0.element as? UIImageView)?.also { iv in
                 if let url = model.screenshots.get(at: index) {
@@ -89,12 +89,6 @@ extension SoftwareResultCell {
     }
     
     private func setupViews() {
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.makeConstraints { it in
-//            it.edgesConstraintToSuperview(edges: .all)
-//        }
-//        contentView.setContentHuggingPriority(.required, for: .vertical)
-//        contentView.setContentCompressionResistancePriority(.required, for: .vertical)
         btTrans.also { it in
             it.setBackgroundImage(UIImage().solid(.systemGray6, width: 10, height: 10).resizableImage(withCapInsets: .zero), for: .highlighted)
             it.addTarget(self, action: #selector(didClick), for: .touchUpInside)
@@ -195,7 +189,7 @@ extension SoftwareResultCell {
         lbGenre.font = infoFont
         lbGenre.textColor = infoColor
         let genre = UIStackView(arrangedSubviews: [
-            UIImageView(image: UIImage(systemName: "person.crop.square")?
+            UIImageView(image: UIImage(systemName: "lightbulb")?
                 .withRenderingMode(.alwaysOriginal)
                 .withTintColor(infoColor)),
             lbGenre
@@ -209,7 +203,7 @@ extension SoftwareResultCell {
         }
         
         // 하단 라인
-        let infoStack = UIStackView(arrangedSubviews: [rating, genre, seller]).also { it in
+        let infoStack = UIStackView(arrangedSubviews: [rating, seller, genre]).also { it in
             contentView.addSubview(it)
             it.axis = .horizontal
             it.alignment = .center
@@ -221,7 +215,7 @@ extension SoftwareResultCell {
             it.makeConstraints {
                 $0.leadingAnchorConstraintToSuperview(padding)
                 $0.trailingAnchorConstraintToSuperview(-padding)
-                $0.topAnchorConstraintTo(ivIcon.bottomAnchor, constant: 10)
+                $0.topAnchorConstraintTo(ivIcon.bottomAnchor, constant: 14)
             }
         }
         
@@ -232,7 +226,7 @@ extension SoftwareResultCell {
         let screenshotWidth = (contentView.bounds.width - padding * 2 - spacing * 2) / 3
         let screenshotHeight = screenshotWidth * screenRatio
 
-        svScreenshots.also { it in
+        stvScreenshots.also { it in
             it.isUserInteractionEnabled = false
             it.axis = .horizontal
             it.distribution = .fillEqually
@@ -244,7 +238,7 @@ extension SoftwareResultCell {
                 $0.heightAnchorConstraintTo(screenshotHeight)
                 $0.leadingAnchorConstraintToSuperview(padding)
                 $0.trailingAnchorConstraintToSuperview(-padding)
-                $0.topAnchorConstraintTo(infoStack.bottomAnchor, constant: 20)
+                $0.topAnchorConstraintTo(infoStack.bottomAnchor, constant: 10)
                 $0.bottomAnchorConstraintToSuperview(-padding)?.priority = .fittingSizeLevel
             }
             for _ in 0..<3 {

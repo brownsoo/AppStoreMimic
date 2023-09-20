@@ -16,6 +16,131 @@ final class DetailViewController: UIViewController {
     }
     
     var viewModel: DetailViewModel?
+    private lazy var headView = DetailHeadView()
+    private lazy var stvScreenshots = UIStackView()
+    private let placeholderImage = UIImage().solid(UIColor.systemGray5, width: 10, height: 10)
+    private let screenBounds = UIScreen.main.bounds
+    private var screenRatio: CGFloat {
+        screenBounds.height / screenBounds.width
+    }
+    private var screenshotWidth: CGFloat {
+        screenBounds.width * 0.6
+    }
+    private var screenshotHeight: CGFloat {
+        screenshotWidth * screenRatio
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupViews()
+        
+        if let vm = self.viewModel {
+            headView.fill(vm)
+            
+            vm.screenshots.forEach { url in
+                let iv = makeScreenshotView()
+                stvScreenshots.addArrangedSubview(iv)
+                iv.kf.setImage(
+                    with: url,
+                    placeholder: placeholderImage,
+                    options: [
+                        .transition(.fade(0.4)),
+                        .cacheOriginalImage
+                    ])
+            }
+        }
+    }
+}
+
+extension DetailViewController {
+    private func setupViews() {
+        let scrollView = UIScrollView()
+        view.addSubview(scrollView)
+        scrollView.makeConstraints { it in
+            //it.widthAnchorConstraintTo(view.bounds.width)
+            it.edgesConstraintTo(view.safeAreaLayoutGuide, edges: .all)
+        }
+        
+        let contentView = UIView()
+        scrollView.addSubview(contentView)
+        contentView.makeConstraints { it in
+            it.edgesConstraintToSuperview(edges: .horizontal)
+            it.topAnchorConstraintToSuperview()
+            it.bottomAnchorConstraintToSuperview()?.priority = .defaultHigh
+        }
+        
+        contentView.addSubview(headView)
+        headView.makeConstraints { it in
+            it.leadingAnchorConstraintToSuperview()
+            it.trailingAnchorConstraintToSuperview()
+            it.topAnchorConstraintToSuperview()
+        }
+        
+        // 스크린샷
+        let svScreenshots = UIScrollView()
+        svScreenshots.showsHorizontalScrollIndicator = false
+        svScreenshots.showsVerticalScrollIndicator = false
+        contentView.addSubview(svScreenshots)
+        svScreenshots.makeConstraints {
+            $0.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+            $0.heightAnchorConstraintTo(screenshotHeight)
+            $0.topAnchorConstraintTo(headView.bottomAnchor, constant: 0)
+            $0.edgesConstraintToSuperview(edges: .horizontal)
+        }
+        
+        stvScreenshots.also { stack in
+            stack.isUserInteractionEnabled = false
+            stack.axis = .horizontal
+            stack.distribution = .equalSpacing
+            stack.spacing = 14
+            svScreenshots.addSubview(stack)
+            stack.makeConstraints {
+                $0.leadingAnchorConstraintToSuperview(20)
+                $0.trailingAnchorConstraintToSuperview(-20)?.priority = .defaultHigh
+                $0.topAnchorConstraintToSuperview()
+                $0.bottomAnchorConstraintToSuperview()
+            }
+        }
+        
+        // 설명
+        
+        let line = UIView()
+        line.backgroundColor = .systemGray3
+        contentView.addSubview(line)
+        line.makeConstraints {
+            $0.setContentHuggingPriority(.required, for: .vertical)
+            $0.setContentCompressionResistancePriority(.required, for: .vertical)
+            $0.heightAnchorConstraintTo(1)
+            $0.leadingAnchorConstraintToSuperview()
+            $0.trailingAnchorConstraintToSuperview()
+            $0.topAnchorConstraintTo(svScreenshots.bottomAnchor, constant: 20)
+        }
+        
+        let descriptView = UIView().also { it in
+            contentView.addSubview(it)
+            it.backgroundColor = .blue
+            it.makeConstraints {
+                $0.heightAnchorConstraintTo(100).priority = .defaultHigh
+                $0.edgesConstraintToSuperview(edges: .horizontal)
+                $0.topAnchorConstraintTo(line.bottomAnchor, constant: 20)
+                $0.bottomAnchorConstraintToSuperview(20)?.priority = .defaultHigh
+            }
+        }
+    }
+    
+    private func makeScreenshotView() -> UIImageView {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.backgroundColor = .systemGray4
+        iv.layer.cornerRadius = DetailHeadView.iconRounding
+        iv.layer.borderColor = UIColor.systemGray3.cgColor
+        iv.layer.borderWidth = 0.5
+        iv.layer.masksToBounds = true
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.heightAnchor.constraint(equalToConstant: screenshotHeight).isActive = true
+        iv.widthAnchor.constraint(equalToConstant: screenshotWidth).isActive = true
+        return iv
+    }
 }
 
 

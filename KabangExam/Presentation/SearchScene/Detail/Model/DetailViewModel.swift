@@ -17,6 +17,7 @@ protocol DetailViewModel: ViewModel {
     var userRatingCount: String { get }
     var genre: String { get }
     var contentAdvisoryRating: String { get }
+    var seller: String { get }
     var screenshots: [URL] { get }
     var description: String { get }
     var releaseNote: String? { get }

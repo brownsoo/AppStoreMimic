@@ -18,6 +18,7 @@ class RatingView: UIView {
         setupViews()
     }
     
+    private var color = UIColor.secondaryLabel
     private var track = UILabel()
     private let maskLayer = CAShapeLayer()
     private var _rate: CGFloat = 0
@@ -39,15 +40,15 @@ class RatingView: UIView {
         setupViews()
     }
     
-    init(progress: CGFloat) {
+    init(progress: CGFloat, color: UIColor = .secondaryLabel) {
         super.init(frame: CGRect())
         self.rate = progress
+        self.color = color
         setupViews()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        debugPrint(track.bounds)
         maskLayer.path = UIBezierPath(
             rect: CGRect(origin: .zero, size: CGSize(width: track.bounds.width * (rate / 5), height: track.bounds.height))
         ).cgPath
@@ -56,22 +57,12 @@ class RatingView: UIView {
 
 extension RatingView {
     private func setupViews() {
-        self.translatesAutoresizingMaskIntoConstraints = false
-//        self.setContentHuggingPriority(.required, for: .vertical)
-//        self.setContentHuggingPriority(.required, for: .horizontal)
-//        self.setContentCompressionResistancePriority(.required, for: .vertical)
-//        self.setContentCompressionResistancePriority(.required, for: .horizontal)
-        
+//        self.translatesAutoresizingMaskIntoConstraints = false
         track = makeStarLabel(filled: false)
         addSubview(track)
-//        track.backgroundColor = .yellow
         track.font = .systemFont(ofSize: 12)
-        track.textColor = .secondaryLabel
+        track.textColor = color
         track.makeConstraints { it in
-//            it.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-//            it.setContentHuggingPriority(.defaultHigh, for: .vertical)
-//            it.setContentCompressionResistancePriority(.required, for: .horizontal)
-//            it.setContentCompressionResistancePriority(.required, for: .vertical)
             it.edgesConstraintToSuperview(edges: .vertical)
             it.leadingAnchorConstraintToSuperview()?.priority = .init(999)
             it.trailingAnchorConstraintToSuperview()?.priority = .init(999)
@@ -80,7 +71,7 @@ extension RatingView {
         let cover = makeStarLabel(filled: true)
         addSubview(cover)
         cover.font = .systemFont(ofSize: 12)
-        cover.textColor = .secondaryLabel
+        cover.textColor = color
         cover.makeConstraints { it in
             it.edgesConstraintTo(track.safeAreaLayoutGuide, edges: .all)
         }

@@ -21,6 +21,8 @@ final class DefaultDetailViewModel: BaseViewModel, DetailViewModel {
     var screenshots: [URL]
     var description: String
     var releaseNote: String?
+    var seller: String
+    
     var isMoreOpened: AnyPublisher<Bool, Never> {
         _isMoreOpened.eraseToAnyPublisher()
     }
@@ -38,6 +40,7 @@ final class DefaultDetailViewModel: BaseViewModel, DetailViewModel {
         screenshots = data.screenshots
         description = data.description
         releaseNote = data.releaseNote
+        seller = data.sellerName
     }
     
     func moreDescription() {
