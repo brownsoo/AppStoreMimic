@@ -24,10 +24,10 @@ struct ResSearchSoftware: ResSearchResult {
     let description: String
     let genres: [String]
     let kind: String
-    let formattedPrice: String
+    let formattedPrice: String?
     let ipadScreenshotUrls: [String]
     let isGameCenterEnabled: Bool
-    let price: Double
+    let price: Double?
     let primaryGenreName: String
     /// "2017-07-26T15:24:27Z"
     let releaseDate: Date

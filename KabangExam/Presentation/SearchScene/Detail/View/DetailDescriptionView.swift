@@ -57,13 +57,16 @@ class DetailDescriptionView: UIView {
             it.leadingAnchorConstraintToSuperview()
             it.trailingAnchorConstraintToSuperview()?.priority = .defaultHigh
             it.topAnchorConstraintTo(line.bottomAnchor, constant: 14)
-            it.bottomAnchorConstraintToSuperview()?.priority = .fittingSizeLevel
+            it.bottomAnchorConstraintToSuperview()?.priority = .init(999)
         }
         
         addSubview(btMore)
         btMore.also { it in
             it.setTitle("더 보기", for: .normal)
             it.contentEdgeInsets = UIEdgeInsets(top: 8, left: 14, bottom: 8, right: 14)
+            it.backgroundColor = .tertiarySystemBackground
+            it.layer.cornerRadius = 8
+            it.layer.masksToBounds = true
             it.addTarget(self, action: #selector(onClickMore), for: .touchUpInside)
         }
         btMore.makeConstraints { it in

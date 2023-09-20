@@ -158,7 +158,7 @@ extension DetailHeadView {
                 $0.leadingAnchorConstraintToSuperview(padding)
                 $0.trailingAnchorConstraintToSuperview(-padding)
                 $0.topAnchorConstraintTo(ivIcon.bottomAnchor, constant: 16)
-                $0.bottomAnchorConstraintToSuperview(-padding)?.priority = .defaultHigh
+                $0.bottomAnchorConstraintToSuperview(-padding)?.priority = .init(999)
                 $0.heightAnchorConstraintTo(infoBoxHeight)
             }
             infoStack.makeConstraints {

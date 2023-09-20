@@ -20,6 +20,7 @@ class SearchListViewController: UIViewController {
     var viewModel: SearchViewModel?
 
     private lazy var recentsDataSource = makeDataSource()
+    private lazy var loadingView = UIView()
     private lazy var activityView = UIActivityIndicatorView(style: .large)
     
     private let recentsTableView = UITableView()
@@ -64,28 +65,25 @@ extension SearchListViewController {
         foot("\(state.status)")
         switch state.status {
             case .idle:
-                activityView.isHidden = true
+                loadingView.isHidden = true
                 var recentsSnap = self.recentsDataSource.snapshot()
                 recentsSnap.deleteAllItems()
                 recentsSnap.appendSections([0])
                 recentsSnap.appendItems(state.recentTerms, toSection: 0)
                 self.recentsDataSource.apply(recentsSnap, animatingDifferences: false)
-                // navigationItem.largeTitleDisplayMode = .automatic
-                foot("\(state.recentTerms)")
                 break
             case .typing:
-                //navigationItem.largeTitleDisplayMode = .never
-                activityView.isHidden = true
-                //resultVc.updateData(state.candidateTerms.map({ CandidateItemViewModel(text: $0)}))
+                loadingView.isHidden = true
+                break
             case .loading:
-                if activityView.isHidden {
-                    activityView.isHidden = false
+                loadingView.isHidden = false
+                view.bringSubviewToFront(loadingView)
+                if !activityView.isAnimating {
                     activityView.startAnimating()
                 }
                 break
             case .result:
-                activityView.isHidden = true
-                // resultVc.updateData(state.searchedItems)
+                loadingView.isHidden = true
                 break
         }
     }
@@ -163,12 +161,18 @@ extension SearchListViewController {
         }
         
         // 로딩뷰
-        view.addSubview(activityView)
+        view.addSubview(loadingView)
+        loadingView.backgroundColor = .black.withAlphaComponent(0.2)
+        loadingView.makeConstraints { it in
+            it.edgesConstraintToSuperview(edges: .all)
+        }
+        loadingView.addSubview(activityView)
         activityView.hidesWhenStopped = true
         activityView.makeConstraints {
             $0.centerXAnchorConstraintToSuperview()
             $0.centerYAnchorConstraintToSuperview()
         }
+        
     }
     
     /// 검색어 선택으로 검색
@@ -291,33 +295,6 @@ struct SearchView_Preview: PreviewProvider {
     
     static var previews: some View {
         
-//        UIViewControllerPreview {
-//            UINavigationController(
-//                rootViewController: SearchListViewController().also { vc in
-//                    vc.updateView(stateIdle.copy(status: .result))
-//                }
-//            )
-//        }
-//        .previewDisplayName("결과")
-        
-//        UIViewControllerPreview {
-//            UINavigationController(
-//                rootViewController: SearchViewController().also { vc in
-//                    vc.updateView(stateIdle.copy(status: .loading))
-//                }
-//            )
-//        }
-//        .previewDisplayName("Loading")
-        
-//        UIViewControllerPreview {
-//            UINavigationController(
-//                rootViewController: SearchViewController().also { vc in
-//                    vc.updateView(stateIdle.copy(status: .typing))
-//                }
-//            )
-//        }
-//        .previewDisplayName("뷰모델적용")
-        
         UIViewControllerPreview {
             UINavigationController(
                 rootViewController: SearchListViewController().also { vc in
@@ -337,5 +314,16 @@ struct SearchView_Preview: PreviewProvider {
         }
         .previewDisplayName("Dark")
         .preferredColorScheme(.dark)
+        
+        
+        UIViewControllerPreview {
+            UINavigationController(
+                rootViewController: SearchListViewController().also { vc in
+                    vc.updateView(stateIdle.copy(status: .loading))
+                }
+            )
+        }
+        .previewDisplayName("Loading")
+        
     }
 }

@@ -70,13 +70,16 @@ class DetailReleaseNoteView: UIView {
             it.trailingAnchorConstraintToSuperview()?.priority = .defaultHigh
             it.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
             it.topAnchorConstraintTo(lbVersion.bottomAnchor, constant: 10)
-            it.bottomAnchorConstraintToSuperview(-10)?.priority = .defaultHigh
+            it.bottomAnchorConstraintToSuperview(-10)?.priority = .init(999)
         }
         
         addSubview(btMore)
         btMore.also { it in
             it.setTitle("더 보기", for: .normal)
             it.contentEdgeInsets = UIEdgeInsets(top: 8, left: 14, bottom: 8, right: 14)
+            it.backgroundColor = .tertiarySystemBackground
+            it.layer.cornerRadius = 8
+            it.layer.masksToBounds = true
             it.addTarget(self, action: #selector(onClickMore), for: .touchUpInside)
         }
         btMore.makeConstraints { it in
