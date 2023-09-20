@@ -29,6 +29,7 @@ final class DetailViewController: UIViewController {
     private var screenshotHeight: CGFloat {
         screenshotWidth * screenRatio
     }
+    private let descriptionView = DetailDescriptionView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,12 +49,16 @@ final class DetailViewController: UIViewController {
                         .cacheOriginalImage
                     ])
             }
+            
+            descriptionView.text = vm.description
         }
     }
 }
 
 extension DetailViewController {
     private func setupViews() {
+        let padding = CGFloat(20)
+        
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
         scrollView.makeConstraints { it in
@@ -95,8 +100,8 @@ extension DetailViewController {
             stack.spacing = 14
             svScreenshots.addSubview(stack)
             stack.makeConstraints {
-                $0.leadingAnchorConstraintToSuperview(20)
-                $0.trailingAnchorConstraintToSuperview(-20)?.priority = .defaultHigh
+                $0.leadingAnchorConstraintToSuperview(padding)
+                $0.trailingAnchorConstraintToSuperview(-padding)?.priority = .defaultHigh
                 $0.topAnchorConstraintToSuperview()
                 $0.bottomAnchorConstraintToSuperview()
             }
@@ -113,17 +118,16 @@ extension DetailViewController {
             $0.heightAnchorConstraintTo(1)
             $0.leadingAnchorConstraintToSuperview()
             $0.trailingAnchorConstraintToSuperview()
-            $0.topAnchorConstraintTo(svScreenshots.bottomAnchor, constant: 20)
+            $0.topAnchorConstraintTo(svScreenshots.bottomAnchor, constant: padding)
         }
         
-        let descriptView = UIView().also { it in
-            contentView.addSubview(it)
-            it.backgroundColor = .blue
-            it.makeConstraints {
-                $0.heightAnchorConstraintTo(100).priority = .defaultHigh
-                $0.edgesConstraintToSuperview(edges: .horizontal)
-                $0.topAnchorConstraintTo(line.bottomAnchor, constant: 20)
-                $0.bottomAnchorConstraintToSuperview(20)?.priority = .defaultHigh
+        descriptionView.also { box in
+            contentView.addSubview(box)
+            box.makeConstraints {
+                $0.heightAnchorConstraintTo(100).priority = .defaultLow
+                $0.edgesConstraintToSuperview(edges: .horizontal, withInset: padding)
+                $0.topAnchorConstraintTo(line.bottomAnchor, constant: padding)
+                $0.bottomAnchorConstraintToSuperview(-100)?.priority = .defaultHigh
             }
         }
     }

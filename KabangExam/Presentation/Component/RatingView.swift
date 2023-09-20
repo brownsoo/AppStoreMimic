@@ -57,7 +57,6 @@ class RatingView: UIView {
 
 extension RatingView {
     private func setupViews() {
-//        self.translatesAutoresizingMaskIntoConstraints = false
         track = makeStarLabel(filled: false)
         addSubview(track)
         track.font = .systemFont(ofSize: 12)

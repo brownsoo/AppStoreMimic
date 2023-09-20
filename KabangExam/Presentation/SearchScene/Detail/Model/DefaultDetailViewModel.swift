@@ -41,6 +41,7 @@ final class DefaultDetailViewModel: BaseViewModel, DetailViewModel {
         description = data.description
         releaseNote = data.releaseNote
         seller = data.sellerName
+        _isMoreOpened.value = data.description.count < 100
     }
     
     func moreDescription() {
