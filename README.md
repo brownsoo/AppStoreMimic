@@ -1,4 +1,4 @@
-# kakao bank code testing
+# AppStore sample
 
 ##  Commit Convention
 

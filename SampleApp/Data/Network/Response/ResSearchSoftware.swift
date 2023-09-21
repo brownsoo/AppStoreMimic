@@ -9,7 +9,7 @@ import Foundation
 
 struct ResSearchSoftware: ResSearchResult {
     let artistId: Int
-    /// ex) KakaoBank Corp.
+    /// 제작자 이름?
     let artistName: String
     let artworkUrl512: String
     let artworkUrl100: String?

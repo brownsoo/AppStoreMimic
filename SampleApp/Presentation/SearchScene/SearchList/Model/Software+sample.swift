@@ -8,7 +8,7 @@
 import Foundation
 
 extension Software {
-    static func sample(id: String = "com.kakaobank.channel", title: String = "카카오뱅크") -> Software {
+    static func sample(id: String = "bundle.id", title: String = "앱 이름") -> Software {
         Software(id: id,
                  icon: URL(string: "https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/14/40/df/1440df75-ca71-cd30-f17f-6a2682065597/AppIcon_real-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg"),
                  bigIcon: URL(string: "https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/14/40/df/1440df75-ca71-cd30-f17f-6a2682065597/AppIcon_real-1x_U007emarketing-0-7-0-85-220.png/100x100bb.jpg"),
