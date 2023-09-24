@@ -1,4 +1,16 @@
-# AppStore sample
+# AppStore Mimic workout
+
+애플 앱스토어 검색 부분을 동일한 모습으로 구현해보고 있습니다.
+
+- [x] Domain, Repository, Presentation, View Controller 
+- [ ] UseCase 계층 추가
+- [ ] UI Test 추가
+
+## Architecture
+
+* 클린 아키텍트 이론에 기반해 도메인, 데이터, 프리젠테이션, 인프라(드라이버)로 계층 구분.
+* UIKit 기반, SwiftUI 미리보기 작성
+
 
 ##  Commit Convention
 
