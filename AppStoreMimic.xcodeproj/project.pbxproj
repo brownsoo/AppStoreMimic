@@ -41,7 +41,7 @@
 		17BEF18D2AB6DFFC00249C5E /* SampleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF18C2AB6DFFC00249C5E /* SampleAppUITestsLaunchTests.swift */; };
 		17BEF1A22AB6E46300249C5E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 17BEF1A12AB6E46300249C5E /* Alamofire */; };
 		17BEF1B02AB6E4C600249C5E /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A42AB6E4C600249C5E /* NetworkResponse.swift */; };
-		17BEF1B12AB6E4C600249C5E /* ApiEndpint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A52AB6E4C600249C5E /* ApiEndpint.swift */; };
+		17BEF1B12AB6E4C600249C5E /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A52AB6E4C600249C5E /* ApiEndpoint.swift */; };
 		17BEF1B22AB6E4C600249C5E /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A62AB6E4C600249C5E /* Resource.swift */; };
 		17BEF1B32AB6E4C600249C5E /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A72AB6E4C600249C5E /* HttpMethod.swift */; };
 		17BEF1B42AB6E4C600249C5E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A82AB6E4C600249C5E /* Response.swift */; };
@@ -135,7 +135,7 @@
 		17BEF18A2AB6DFFC00249C5E /* SampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppUITests.swift; sourceTree = "<group>"; };
 		17BEF18C2AB6DFFC00249C5E /* SampleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		17BEF1A42AB6E4C600249C5E /* NetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
-		17BEF1A52AB6E4C600249C5E /* ApiEndpint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEndpint.swift; sourceTree = "<group>"; };
+		17BEF1A52AB6E4C600249C5E /* ApiEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEndpoint.swift; sourceTree = "<group>"; };
 		17BEF1A62AB6E4C600249C5E /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		17BEF1A72AB6E4C600249C5E /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		17BEF1A82AB6E4C600249C5E /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
@@ -293,6 +293,14 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		17A47A012AC3A6D700A9003F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				17BEF1C62AB705DE00249C5E /* AppError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		17BEF15D2AB6DFFB00249C5E = {
 			isa = PBXGroup;
 			children = (
@@ -381,8 +389,8 @@
 		17BEF19C2AB6E3ED00249C5E /* Infra */ = {
 			isa = PBXGroup;
 			children = (
+				17A47A012AC3A6D700A9003F /* Error */,
 				17BEF1A32AB6E4C600249C5E /* Network */,
-				17BEF1C62AB705DE00249C5E /* AppError.swift */,
 			);
 			path = Infra;
 			sourceTree = "<group>";
@@ -420,15 +428,15 @@
 		17BEF1A32AB6E4C600249C5E /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				17BEF1A42AB6E4C600249C5E /* NetworkResponse.swift */,
-				17BEF1A52AB6E4C600249C5E /* ApiEndpint.swift */,
-				17BEF1A62AB6E4C600249C5E /* Resource.swift */,
-				17BEF1A72AB6E4C600249C5E /* HttpMethod.swift */,
-				17BEF1A82AB6E4C600249C5E /* Response.swift */,
-				17BEF1A92AB6E4C600249C5E /* ResponseDecoder.swift */,
-				17BEF1AA2AB6E4C600249C5E /* NetworkResource.swift */,
 				17BEF1AB2AB6E4C600249C5E /* Service */,
 				17BEF1AD2AB6E4C600249C5E /* Client */,
+				17BEF1A52AB6E4C600249C5E /* ApiEndpoint.swift */,
+				17BEF1A72AB6E4C600249C5E /* HttpMethod.swift */,
+				17BEF1AA2AB6E4C600249C5E /* NetworkResource.swift */,
+				17BEF1A42AB6E4C600249C5E /* NetworkResponse.swift */,
+				17BEF1A62AB6E4C600249C5E /* Resource.swift */,
+				17BEF1A82AB6E4C600249C5E /* Response.swift */,
+				17BEF1A92AB6E4C600249C5E /* ResponseDecoder.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -700,7 +708,7 @@
 				17BEF1C52AB6FE5400249C5E /* ResSearchSoftware.swift in Sources */,
 				17BEF1FE2AB9FB6700249C5E /* SearchSceneDIProvider.swift in Sources */,
 				177BA9282AB98E8400560073 /* SearchResultsTableViewController.swift in Sources */,
-				17BEF1B12AB6E4C600249C5E /* ApiEndpint.swift in Sources */,
+				17BEF1B12AB6E4C600249C5E /* ApiEndpoint.swift in Sources */,
 				17116EA12ABA7C8500BAF2B6 /* AppFlowCoordinator.swift in Sources */,
 				17BEF1DA2AB7219200249C5E /* DefaultRecentsStorage.swift in Sources */,
 				17BEF1F12AB9EAB400249C5E /* SearchFlowCoordinator.swift in Sources */,

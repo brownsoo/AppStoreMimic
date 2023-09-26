@@ -1,5 +1,5 @@
 //
-//  ApiEndpint.swift
+//  ApiEndpoint.swift
 //  AppStoreSample
 //
 //  Created by hyonsoo han on 2023/09/17.
