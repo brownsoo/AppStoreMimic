@@ -2,6 +2,8 @@
 
 애플 앱스토어 검색 부분을 동일한 모습으로 구현해보고 있습니다.
 
+참고: https://github.com/kudoleh/iOS-Clean-Architecture-MVVM
+
 - [x] Domain, Repository, Presentation, View Controller 
 - [ ] UseCase 계층 추가
 - [ ] UI Test 추가
