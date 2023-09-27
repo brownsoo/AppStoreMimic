@@ -12,7 +12,9 @@ import Combine
 
 final class DefaultSearchViewModel: BaseViewModel {
     private let repository: iTunesRepository
-    private let _stateChanges: CurrentValueSubject<SearchViewState, Never>
+    private let _stateChanges = CurrentValueSubject<SearchViewState, Never>(
+        SearchViewState(status: .idle, recentTerms: [], candidateTerms: [], searchedItems: [])
+    )
     private var searchTask: Cancellable? {
         willSet {
             searchTask?.cancel()
@@ -30,7 +32,6 @@ final class DefaultSearchViewModel: BaseViewModel {
     init(repository: iTunesRepository, actions: SearchListViewActions) {
         self.repository = repository
         self.actions = actions
-        self._stateChanges = CurrentValueSubject(SearchViewState(status: .idle, recentTerms: [], candidateTerms: [], searchedItems: []))
     }
     
     override func load() {
