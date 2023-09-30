@@ -41,7 +41,7 @@ extension AppError {
             case .networkDisconnected:
                 return "인터넷 연결이 필요합니다."
             case .networkError(let cause):
-                return "\(cause)"
+                return "\(cause.localizedDescription)"
             case .runtime(let cause, let message):
                 return "\(message ?? "runtime") \(cause)"
             case .contentNotChanged:
