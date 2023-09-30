@@ -39,9 +39,7 @@ class DefaultNetworkClient: NetworkClient {
     }
     
     private func convertToAppError(_ error: AFError, withData data: Data?) -> AppError {
-        if error.responseCode == 304 {
-            return AppError.contentNotChanged
-        }
+        
         if let nsError = error.underlyingError as? NSError {
             switch(nsError.code) {
                 case NSURLErrorTimedOut,
@@ -56,6 +54,10 @@ class DefaultNetworkClient: NetworkClient {
                     break
                     
             }
+        }
+        
+        if error.responseCode == 304 {
+            return AppError.contentNotChanged
         }
         return .networkError(cause: error)
     }
