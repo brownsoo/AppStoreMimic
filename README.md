@@ -1,6 +1,7 @@
-# AppStore Mimic workout
+# iOS Clean Architecture Workout
 
-애플 앱스토어 검색 부분을 동일한 모습으로 구현해보고 있습니다.
+클린 아키텍쳐에 따른 경계를 구분하여, 
+애플 앱스토어 검색 부분을 구현해봅니다.
 
 참고: https://github.com/kudoleh/iOS-Clean-Architecture-MVVM
 
