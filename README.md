@@ -22,6 +22,7 @@ TODO:
 * UIKit 기반 뷰 구성, SwiftUI 미리보기 작성
 * MVVM 방식 뷰 업데이트 구성 
 * 뷰 상태를 하나의 struct로 구성 (`SearchViewState`)
+* minimum target : iOS 13.0
 
 ## Preview
 
