@@ -47,7 +47,7 @@ class BaseViewModel: ViewModel {
     func handleError(_ error: Error) {
         let message: String
         debugPrint(error)
-        if let e = error as? AppError {
+        if let e = error as? HumanReadable {
             message = e.humanMessage()
         } else {
             message = error.localizedDescription

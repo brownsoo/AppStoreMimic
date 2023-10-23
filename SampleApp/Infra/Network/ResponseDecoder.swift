@@ -37,7 +37,7 @@ final class JSONResponseDecoder: ResponseDecoder {
         do {
             return try decoder.decode(T.self, from: data)
         } catch {
-            throw AppError.parsing(cause: error, model: String(describing: T.self))
+            throw NetworkError.parsing(cause: error, model: String(describing: T.self))
         }
     }
 }

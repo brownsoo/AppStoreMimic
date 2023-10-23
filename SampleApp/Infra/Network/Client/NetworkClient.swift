@@ -38,7 +38,7 @@ class DefaultNetworkClient: NetworkClient {
         }
     }
     
-    private func convertToAppError(_ error: AFError, withData data: Data?) -> AppError {
+    private func convertToAppError(_ error: AFError, withData data: Data?) -> NetworkError {
         
         if let nsError = error.underlyingError as? NSError {
             switch(nsError.code) {
@@ -57,7 +57,7 @@ class DefaultNetworkClient: NetworkClient {
         }
         
         if error.responseCode == 304 {
-            return AppError.contentNotChanged
+            return .contentNotChanged
         }
         return .networkError(cause: error)
     }

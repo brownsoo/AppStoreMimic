@@ -1,33 +1,32 @@
 //
-//  AppError.swift
+//  NetworkError.swift
 //  AppStoreSample
 //
-//  Created by hyonsoo on 2023/09/17.
+//  Created by hyonsoo on 10/23/23.
+//  Copyright © 2023 HSL. All rights reserved.
 //
 
 import Foundation
 
-enum AppError: Error {
+enum NetworkError: Error {
     case unauthorized
-    /// 요청 실패
     case requestFailed(statusCode: Int, message: String?)
     case parsing(cause: Error, model: String)
     case emptyResponse
     case networkDisconnected
     case networkError(cause: Error)
-    case runtime(cause: Error, message: String?)
     case contentNotChanged
     case urlGenerate(urlString: String)
-    case illegalArguments
 }
 
+
 extension Error {
-    var asAppError: AppError? {
-        self as? AppError
+    var asNetworkError: NetworkError? {
+        self as? NetworkError
     }
 }
 
-extension AppError {
+extension NetworkError : HumanReadable {
     func humanMessage() -> String {
         switch self {
             case .unauthorized:
@@ -41,15 +40,11 @@ extension AppError {
             case .networkDisconnected:
                 return "인터넷 연결이 필요합니다."
             case .networkError(let cause):
-                return "\(cause.localizedDescription)"
-            case .runtime(let cause, let message):
-                return "\(message ?? "runtime") \(cause)"
+                return "\(cause)"
             case .contentNotChanged:
                 return "컨텐츠 변경이 없음."
             case .urlGenerate(let urlString):
                 return "주소 형식이 맞지 않아요.\n\(urlString)"
-            case .illegalArguments:
-                return "잘못된 인자 전달"
         }
     }
 }

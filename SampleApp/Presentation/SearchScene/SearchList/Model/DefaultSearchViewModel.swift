@@ -104,7 +104,7 @@ extension DefaultSearchViewModel: SearchViewModel {
                     state.searchedItems = items.map { SoftwareItemViewModel(model: $0) }
                     this.resultItems = items
                 case .failure(let error):
-                    if let e = error.asAppError, case AppError.contentNotChanged = e {
+                    if let e = error.asNetworkError, case NetworkError.contentNotChanged = e {
                         // not changed
                     } else {
                         this.handleError(error)

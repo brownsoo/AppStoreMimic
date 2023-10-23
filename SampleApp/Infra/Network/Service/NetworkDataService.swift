@@ -28,10 +28,12 @@ extension DefaultNetworkDataService: NetworkDataService {
     func request<T>(_ resource: NetworkResource<T>) async throws -> T where T: Decodable {
         let res = try await self.client.request(resource)
         if res.status == 304 {
-            throw AppError.contentNotChanged
+            // 304 를 오류로 처리
+            throw NetworkError.contentNotChanged
         }
         guard let data = res.data else {
-            throw AppError.emptyResponse
+            // FIXME: 바디가 없지만 성공한 응답문 처리
+            throw NetworkError.emptyResponse
         }
         let model: T = try self.decoder.decode(data)
         return model
