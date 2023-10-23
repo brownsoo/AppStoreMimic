@@ -40,15 +40,15 @@
 		17BEF18B2AB6DFFC00249C5E /* SampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF18A2AB6DFFC00249C5E /* SampleAppUITests.swift */; };
 		17BEF18D2AB6DFFC00249C5E /* SampleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF18C2AB6DFFC00249C5E /* SampleAppUITestsLaunchTests.swift */; };
 		17BEF1A22AB6E46300249C5E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 17BEF1A12AB6E46300249C5E /* Alamofire */; };
-		17BEF1B02AB6E4C600249C5E /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A42AB6E4C600249C5E /* NetworkResponse.swift */; };
-		17BEF1B12AB6E4C600249C5E /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A52AB6E4C600249C5E /* ApiEndpoint.swift */; };
-		17BEF1B22AB6E4C600249C5E /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A62AB6E4C600249C5E /* Resource.swift */; };
+		17BEF1B02AB6E4C600249C5E /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A42AB6E4C600249C5E /* ApiResponse.swift */; };
+		17BEF1B12AB6E4C600249C5E /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A52AB6E4C600249C5E /* NetworkEndpoint.swift */; };
+		17BEF1B22AB6E4C600249C5E /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A62AB6E4C600249C5E /* NetworkRequest.swift */; };
 		17BEF1B32AB6E4C600249C5E /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A72AB6E4C600249C5E /* HttpMethod.swift */; };
-		17BEF1B42AB6E4C600249C5E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A82AB6E4C600249C5E /* Response.swift */; };
+		17BEF1B42AB6E4C600249C5E /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A82AB6E4C600249C5E /* NetworkResponse.swift */; };
 		17BEF1B52AB6E4C600249C5E /* ResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1A92AB6E4C600249C5E /* ResponseDecoder.swift */; };
-		17BEF1B62AB6E4C600249C5E /* NetworkResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1AA2AB6E4C600249C5E /* NetworkResource.swift */; };
+		17BEF1B62AB6E4C600249C5E /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1AA2AB6E4C600249C5E /* ApiRequest.swift */; };
 		17BEF1B72AB6E4C600249C5E /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1AC2AB6E4C600249C5E /* NetworkDataService.swift */; };
-		17BEF1B82AB6E4C600249C5E /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1AE2AB6E4C600249C5E /* NetworkClient.swift */; };
+		17BEF1B82AB6E4C600249C5E /* AlamofireNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1AE2AB6E4C600249C5E /* AlamofireNetworkClient.swift */; };
 		17BEF1B92AB6E4C600249C5E /* AlarmoLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1AF2AB6E4C600249C5E /* AlarmoLogger.swift */; };
 		17BEF1BB2AB6E4E700249C5E /* Foot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1BA2AB6E4E700249C5E /* Foot.swift */; };
 		17BEF1BF2AB6E5FE00249C5E /* SearchApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1BE2AB6E5FE00249C5E /* SearchApi.swift */; };
@@ -83,6 +83,8 @@
 		17BEF2002ABB2F6200249C5E /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEF1FF2ABB2F6200249C5E /* Env.swift */; };
 		17E9A5852AE5F9750047DCFE /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9A5842AE5F9750047DCFE /* NetworkError.swift */; };
 		17E9A5872AE5F9B30047DCFE /* HumanReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9A5862AE5F9B30047DCFE /* HumanReadable.swift */; };
+		17E9A5892AE611590047DCFE /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9A5882AE611590047DCFE /* NetworkClient.swift */; };
+		17E9A58B2AE613DE0047DCFE /* JSONResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9A58A2AE613DD0047DCFE /* JSONResponseDecoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,15 +138,15 @@
 		17BEF1862AB6DFFC00249C5E /* AppStoreSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BEF18A2AB6DFFC00249C5E /* SampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppUITests.swift; sourceTree = "<group>"; };
 		17BEF18C2AB6DFFC00249C5E /* SampleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		17BEF1A42AB6E4C600249C5E /* NetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
-		17BEF1A52AB6E4C600249C5E /* ApiEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEndpoint.swift; sourceTree = "<group>"; };
-		17BEF1A62AB6E4C600249C5E /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		17BEF1A42AB6E4C600249C5E /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		17BEF1A52AB6E4C600249C5E /* NetworkEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkEndpoint.swift; sourceTree = "<group>"; };
+		17BEF1A62AB6E4C600249C5E /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		17BEF1A72AB6E4C600249C5E /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
-		17BEF1A82AB6E4C600249C5E /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		17BEF1A82AB6E4C600249C5E /* NetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		17BEF1A92AB6E4C600249C5E /* ResponseDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseDecoder.swift; sourceTree = "<group>"; };
-		17BEF1AA2AB6E4C600249C5E /* NetworkResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResource.swift; sourceTree = "<group>"; };
+		17BEF1AA2AB6E4C600249C5E /* ApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		17BEF1AC2AB6E4C600249C5E /* NetworkDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataService.swift; sourceTree = "<group>"; };
-		17BEF1AE2AB6E4C600249C5E /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		17BEF1AE2AB6E4C600249C5E /* AlamofireNetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkClient.swift; sourceTree = "<group>"; };
 		17BEF1AF2AB6E4C600249C5E /* AlarmoLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmoLogger.swift; sourceTree = "<group>"; };
 		17BEF1BA2AB6E4E700249C5E /* Foot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foot.swift; sourceTree = "<group>"; };
 		17BEF1BE2AB6E5FE00249C5E /* SearchApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApi.swift; sourceTree = "<group>"; };
@@ -177,6 +179,8 @@
 		17BEF1FF2ABB2F6200249C5E /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		17E9A5842AE5F9750047DCFE /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		17E9A5862AE5F9B30047DCFE /* HumanReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanReadable.swift; sourceTree = "<group>"; };
+		17E9A5882AE611590047DCFE /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		17E9A58A2AE613DD0047DCFE /* JSONResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResponseDecoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,14 +301,6 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		17A47A012AC3A6D700A9003F /* Error */ = {
-			isa = PBXGroup;
-			children = (
-				17E9A5842AE5F9750047DCFE /* NetworkError.swift */,
-			);
-			path = Error;
-			sourceTree = "<group>";
-		};
 		17BEF15D2AB6DFFB00249C5E = {
 			isa = PBXGroup;
 			children = (
@@ -394,7 +390,8 @@
 		17BEF19C2AB6E3ED00249C5E /* Infra */ = {
 			isa = PBXGroup;
 			children = (
-				17A47A012AC3A6D700A9003F /* Error */,
+				17BEF1AD2AB6E4C600249C5E /* ApiClient */,
+				17BEF1AB2AB6E4C600249C5E /* Service */,
 				17BEF1A32AB6E4C600249C5E /* Network */,
 			);
 			path = Infra;
@@ -434,14 +431,12 @@
 		17BEF1A32AB6E4C600249C5E /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				17BEF1AB2AB6E4C600249C5E /* Service */,
-				17BEF1AD2AB6E4C600249C5E /* Client */,
-				17BEF1A52AB6E4C600249C5E /* ApiEndpoint.swift */,
 				17BEF1A72AB6E4C600249C5E /* HttpMethod.swift */,
-				17BEF1AA2AB6E4C600249C5E /* NetworkResource.swift */,
-				17BEF1A42AB6E4C600249C5E /* NetworkResponse.swift */,
-				17BEF1A62AB6E4C600249C5E /* Resource.swift */,
-				17BEF1A82AB6E4C600249C5E /* Response.swift */,
+				17E9A5882AE611590047DCFE /* NetworkClient.swift */,
+				17BEF1A52AB6E4C600249C5E /* NetworkEndpoint.swift */,
+				17E9A5842AE5F9750047DCFE /* NetworkError.swift */,
+				17BEF1A62AB6E4C600249C5E /* NetworkRequest.swift */,
+				17BEF1A82AB6E4C600249C5E /* NetworkResponse.swift */,
 				17BEF1A92AB6E4C600249C5E /* ResponseDecoder.swift */,
 			);
 			path = Network;
@@ -455,13 +450,16 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		17BEF1AD2AB6E4C600249C5E /* Client */ = {
+		17BEF1AD2AB6E4C600249C5E /* ApiClient */ = {
 			isa = PBXGroup;
 			children = (
-				17BEF1AE2AB6E4C600249C5E /* NetworkClient.swift */,
+				17BEF1AE2AB6E4C600249C5E /* AlamofireNetworkClient.swift */,
 				17BEF1AF2AB6E4C600249C5E /* AlarmoLogger.swift */,
+				17BEF1AA2AB6E4C600249C5E /* ApiRequest.swift */,
+				17BEF1A42AB6E4C600249C5E /* ApiResponse.swift */,
+				17E9A58A2AE613DD0047DCFE /* JSONResponseDecoder.swift */,
 			);
-			path = Client;
+			path = ApiClient;
 			sourceTree = "<group>";
 		};
 		17BEF1BC2AB6E5DB00249C5E /* Network */ = {
@@ -689,7 +687,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17116EA52ABACA5500BAF2B6 /* DebugLabel.swift in Sources */,
-				17BEF1B42AB6E4C600249C5E /* Response.swift in Sources */,
+				17BEF1B42AB6E4C600249C5E /* NetworkResponse.swift in Sources */,
 				17BEF1C32AB6EB5000249C5E /* ResResults.swift in Sources */,
 				17BEF1C72AB705DE00249C5E /* AppError.swift in Sources */,
 				17BEF1BB2AB6E4E700249C5E /* Foot.swift in Sources */,
@@ -697,7 +695,7 @@
 				17BEF1EA2AB75ADF00249C5E /* LoadingView.swift in Sources */,
 				17BEF1DF2AB7584D00249C5E /* BaseViewModel.swift in Sources */,
 				17BEF1D62AB71D4300249C5E /* Task+Cancellable.swift in Sources */,
-				17BEF1B02AB6E4C600249C5E /* NetworkResponse.swift in Sources */,
+				17BEF1B02AB6E4C600249C5E /* ApiResponse.swift in Sources */,
 				177BA9222AB94A5300560073 /* UIViewControllerPreview.swift in Sources */,
 				1740D95E2AB8280E003C2D69 /* SoftwareResultCell.swift in Sources */,
 				177BA9262AB96EDE00560073 /* DefaultSearchViewModel.swift in Sources */,
@@ -705,17 +703,19 @@
 				1740D96F2AB84021003C2D69 /* Int+CountFormat.swift in Sources */,
 				17E9A5852AE5F9750047DCFE /* NetworkError.swift in Sources */,
 				17BEF1E82AB75AC400249C5E /* Alertable.swift in Sources */,
+				17E9A58B2AE613DE0047DCFE /* JSONResponseDecoder.swift in Sources */,
 				17116EA32ABA8A8300BAF2B6 /* DetailHeadView.swift in Sources */,
 				1740D9632AB839B2003C2D69 /* CandidateSearchCell.swift in Sources */,
 				177BA92A2AB9A52A00560073 /* CandidateItemViewModel.swift in Sources */,
 				17BEF1C12AB6E6AF00249C5E /* iTunesSearchEndpoint.swift in Sources */,
+				17E9A5892AE611590047DCFE /* NetworkClient.swift in Sources */,
 				17BEF1CE2AB70ED200249C5E /* iTunesRepository.swift in Sources */,
 				17BEF2002ABB2F6200249C5E /* Env.swift in Sources */,
 				17116E9F2ABA7B9E00BAF2B6 /* AppDIProvider.swift in Sources */,
 				17BEF1C52AB6FE5400249C5E /* ResSearchSoftware.swift in Sources */,
 				17BEF1FE2AB9FB6700249C5E /* SearchSceneDIProvider.swift in Sources */,
 				177BA9282AB98E8400560073 /* SearchResultsTableViewController.swift in Sources */,
-				17BEF1B12AB6E4C600249C5E /* ApiEndpoint.swift in Sources */,
+				17BEF1B12AB6E4C600249C5E /* NetworkEndpoint.swift in Sources */,
 				17116EA12ABA7C8500BAF2B6 /* AppFlowCoordinator.swift in Sources */,
 				17BEF1DA2AB7219200249C5E /* DefaultRecentsStorage.swift in Sources */,
 				17BEF1F12AB9EAB400249C5E /* SearchFlowCoordinator.swift in Sources */,
@@ -725,12 +725,12 @@
 				177BA9242AB96BBE00560073 /* SearchViewModel.swift in Sources */,
 				17BEF1F52AB9F23A00249C5E /* DetailViewController.swift in Sources */,
 				17BEF1F92AB9F5FB00249C5E /* FlowCoordinator.swift in Sources */,
-				17BEF1B22AB6E4C600249C5E /* Resource.swift in Sources */,
+				17BEF1B22AB6E4C600249C5E /* NetworkRequest.swift in Sources */,
 				17BEF1B92AB6E4C600249C5E /* AlarmoLogger.swift in Sources */,
 				17BEF1F32AB9EC2F00249C5E /* SearchListViewActions.swift in Sources */,
 				1740D96D2AB83E49003C2D69 /* SoftwareItemViewModel.swift in Sources */,
 				17BEF1E22AB75A6500249C5E /* UIView+AutoLayout.swift in Sources */,
-				17BEF1B62AB6E4C600249C5E /* NetworkResource.swift in Sources */,
+				17BEF1B62AB6E4C600249C5E /* ApiRequest.swift in Sources */,
 				17BEF1F72AB9F26900249C5E /* DetailViewModel.swift in Sources */,
 				177BA9202AB9300900560073 /* RatingView.swift in Sources */,
 				17BEF16A2AB6DFFB00249C5E /* AppDelegate.swift in Sources */,
@@ -748,7 +748,7 @@
 				17BEF16C2AB6DFFB00249C5E /* SceneDelegate.swift in Sources */,
 				17BEF1EF2AB917E800249C5E /* FoundationExtentions.swift in Sources */,
 				17BEF1E62AB75AA700249C5E /* UIImage+Extensions.swift in Sources */,
-				17BEF1B82AB6E4C600249C5E /* NetworkClient.swift in Sources */,
+				17BEF1B82AB6E4C600249C5E /* AlamofireNetworkClient.swift in Sources */,
 				17BEF1E42AB75A8700249C5E /* UIViewPreview.swift in Sources */,
 				177BA92C2AB9A53E00560073 /* ResultItemModel.swift in Sources */,
 				17116EA92ABAF8BE00BAF2B6 /* DetailReleaseNoteView.swift in Sources */,

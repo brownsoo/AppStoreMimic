@@ -1,5 +1,5 @@
 //
-//  Resource.swift
+//  NetworkRequest.swift
 //  AppStoreSample
 //
 //  Created by hyonsoo han on 2023/09/17.
@@ -7,7 +7,8 @@
 
 import Foundation
 
-protocol Resource {
+protocol NetworkRequest<ResponseType> {
+    associatedtype ResponseType
     var url: URL { get }
     var headers: [String : String] { get }
     

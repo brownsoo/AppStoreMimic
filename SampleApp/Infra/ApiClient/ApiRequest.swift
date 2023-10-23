@@ -1,5 +1,5 @@
 //
-//  NetworkResource.swift
+//  ApiRequest.swift
 //  AppStoreSample
 //
 //  Created by hyonsoo han on 2023/09/17.
@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct NetworkResource<A>: Resource {
-    let endpoint: ApiEndpoint
+struct ApiRequest<A>: NetworkRequest {
+    typealias ResponseType = A
+    let endpoint: NetworkEndpoint
     let method: HttpMethod
     let body: Data?
     
@@ -20,7 +21,7 @@ struct NetworkResource<A>: Resource {
         URL(string: endpoint.urlString + paramsAppendix())!
     }
     
-    init(_ endpoint: ApiEndpoint,
+    init(_ endpoint: NetworkEndpoint,
          method: HttpMethod = .get,
          body: Data? =  nil
     ) {

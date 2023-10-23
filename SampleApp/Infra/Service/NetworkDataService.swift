@@ -10,7 +10,7 @@ import Foundation
 /// 네트워크에서 데이터 모델을 제공
 protocol NetworkDataService {
     /// 원격 리소스에 요청하고 데이터를 받는다.
-    func request<T>(_ resource: NetworkResource<T>) async throws -> T where T: Decodable
+    func request<T>(_ request: some NetworkRequest<T>) async throws -> T where T: Decodable
 }
 
 final class DefaultNetworkDataService {
@@ -25,8 +25,8 @@ final class DefaultNetworkDataService {
 }
 
 extension DefaultNetworkDataService: NetworkDataService {
-    func request<T>(_ resource: NetworkResource<T>) async throws -> T where T: Decodable {
-        let res = try await self.client.request(resource)
+    func request<T>(_ request: some NetworkRequest<T>) async throws -> T where T: Decodable {
+        let res = try await self.client.request(request)
         if res.status == 304 {
             // 304 를 오류로 처리
             throw NetworkError.contentNotChanged

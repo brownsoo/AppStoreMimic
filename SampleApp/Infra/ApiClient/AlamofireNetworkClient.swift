@@ -1,5 +1,5 @@
 //
-//  NetworkClient.swift
+//  AlamofireNetworkClient.swift
 //  AppStoreSample
 //
 //  Created by hyonsoo han on 2023/09/17.
@@ -8,11 +8,7 @@
 import Foundation
 import Alamofire
 
-protocol NetworkClient {
-    func request(_ resource: Resource) async throws -> Response
-}
-
-class DefaultNetworkClient: NetworkClient {
+class AlamofireNetworkClient: NetworkClient {
     
     let session: Alamofire.Session = {
         let config = URLSessionConfiguration.af.default
@@ -23,7 +19,7 @@ class DefaultNetworkClient: NetworkClient {
         return Session(configuration: config)
     }()
     
-    func request(_ resource: Resource) async throws -> Response {
+    func request(_ resource: some NetworkRequest) async throws -> NetworkResponse {
         let request = try resource.toUrlRequest()
         let task = self.session.request(request)
             .validate(statusCode: 200..<299)
@@ -32,7 +28,7 @@ class DefaultNetworkClient: NetworkClient {
         
         switch response.result {
             case .success(let data):
-                return NetworkResponse(status: response.response?.statusCode ?? 0, data: data)
+                return ApiResponse(status: response.response?.statusCode ?? 0, data: data)
             case .failure(let afError):
                 throw self.convertToAppError(afError, withData: response.data)
         }

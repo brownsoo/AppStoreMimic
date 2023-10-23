@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct iTunesSearchEndpoint: ApiEndpoint {
+struct iTunesSearchEndpoint: NetworkEndpoint {
     let apiHost = "https://itunes.apple.com/search"
     let urlString: String
     var headers: [String : String]
