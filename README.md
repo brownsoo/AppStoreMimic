@@ -1,7 +1,6 @@
-# iOS Clean Architecture Workout
-
-클린 아키텍쳐에 따른 경계를 구분하여, 
-애플 앱스토어 검색 부분을 구현해봅니다.
+# iOS Clean Architecture Workout 2
+ 
+## 애플 앱스토어 검색 부분을 구현해봅니다.
 
 참고: https://github.com/kudoleh/iOS-Clean-Architecture-MVVM
 
@@ -28,11 +27,7 @@ TODO:
 
 https://github.com/brownsoo/AppStoreMimic/assets/5244407/007b19c0-b628-4394-b47a-93a5487f51d2
 
-
-
 https://github.com/brownsoo/AppStoreMimic/assets/5244407/733c8353-4832-438f-b5ac-14672cd82607
-
-
 
 
 ##  Commit Convention
