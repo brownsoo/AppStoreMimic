@@ -30,7 +30,10 @@ final class JSONResponseDecoder: ResponseDecoder {
     
     init(){}
     
-    func decode<T>(_ data: Data) throws -> T where T : Decodable {
+    func decode<T>(_ data: Data?) throws -> T where T : Decodable {
+        guard let data = data else {
+            throw NetworkError.emptyResponse
+        }
         do {
             return try decoder.decode(T.self, from: data)
         } catch {
