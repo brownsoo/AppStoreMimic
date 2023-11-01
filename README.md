@@ -1,4 +1,4 @@
-# iOS Clean Architecture Workout 2
+# iOS Clean Architecture Workout
  
 ## 애플 앱스토어 검색 부분을 구현해봅니다.
 
