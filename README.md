@@ -27,9 +27,9 @@
 
 ## Preview
 
-https://github.com/brownsoo/AppStoreMimic/assets/5244407/007b19c0-b628-4394-b47a-93a5487f51d2
+[<img src="preview-low.gif" width="296px">](https://vimeo.com/880061656 "iOS 앱 개발 연습1 - 앱스토어 검색")
 
-https://github.com/brownsoo/AppStoreMimic/assets/5244407/733c8353-4832-438f-b5ac-14672cd82607
+https://github.com/brownsoo/AppStoreMimic/assets/5244407/007b19c0-b628-4394-b47a-93a5487f51d2
 
 
 ##  Commit Convention
